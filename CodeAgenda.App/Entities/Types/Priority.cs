@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CodeAgenda.Domain.Entities.Types
 {
     /// <summary>
-    /// Priority of the activity
+    /// Priority of the Assignment
     /// </summary>
     public enum Priority
     {

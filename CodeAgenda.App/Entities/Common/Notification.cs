@@ -1,4 +1,4 @@
-﻿using CodeAgenda.Domain.Entities.Persons;
+﻿using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +27,6 @@ namespace CodeAgenda.Domain.Entities.Common
         public bool IsRead { get; set; }
 
         /// <summary>
-        /// The person who will receive this notification.
-        /// </summary>
-        public Person Person { get; set; }
-
-        /// <summary>
         /// Associated project identifier.
         /// </summary>
         public int ProjectId { get; set; }
@@ -43,12 +38,18 @@ namespace CodeAgenda.Domain.Entities.Common
         /// </summary>
         protected Notification() { }
 
-        public Notification(string message, DateTime reminderDate, bool isRead, Person person, int projectId)
+        /// <summary>
+        /// Instance a Notification object.
+        /// </summary>
+        /// <param name="message">Message of the notification.</param>
+        /// <param name="reminderDate">Reminder date of the notification</param>
+        /// <param name="isRead">Indicates if the notification is read</param>
+        /// <param name="projectId">Project associated Id</param>
+        public Notification(string message, DateTime reminderDate, bool isRead, int projectId)
         {
             Message = message;
             ReminderDate = reminderDate;
             IsRead = isRead;
-            Person = person;
             ProjectId = projectId;
         }
     }

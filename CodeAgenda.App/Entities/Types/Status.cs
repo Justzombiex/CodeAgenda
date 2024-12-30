@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace CodeAgenda.Domain.Entities.Types
 {
     /// <summary>
-    /// Status of the activity
+    /// Status of the Assignment
     /// </summary>
     public enum Status
     {
         /// <summary>
-        /// Pending activity
+        /// Pending Assignment
         /// </summary>
         Pending,
         /// <summary>
-        /// In progress activity
+        /// In progress Assignment
         /// </summary>
         InProgress,
         /// <summary>
-        /// Completed activity
+        /// Completed Assignment
         /// </summary>
         Completed
     }

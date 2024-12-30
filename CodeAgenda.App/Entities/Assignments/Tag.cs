@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Common;
 
-namespace CodeAgenda.Domain.Entities.Activities
+namespace CodeAgenda.Domain.Entities.Assignments
 {
     public class Tag : Entity
     {

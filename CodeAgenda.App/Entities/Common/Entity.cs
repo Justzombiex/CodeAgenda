@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace CodeAgenda.Domain.Entities.Common
 {
     /// <summary>
-    /// Clase base para todas las entidades en el soporte de datos.
+    /// Base class for all the entities in the DB.
     /// </summary>
     public abstract class Entity
     {
         #region Properties
 
         /// <summary>
-        /// Identificador en el soporte de datos.
+        /// DB Identifier.
         /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

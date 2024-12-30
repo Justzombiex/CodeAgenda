@@ -23,7 +23,12 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <summary>
         /// The date when the note was last modified.
         /// </summary>
-        public DateTime? LastModifiedDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+
+        /// <summary>
+        /// Associated project identifier.
+        /// </summary>
+        public int ProjectId { get; set; }
 
         #endregion Properties
 
@@ -36,10 +41,11 @@ namespace CodeAgenda.Domain.Entities.Common
         /// Initializes an instance of Note.
         /// </summary>
         /// <param name="content">The content of the note.</param>
-        public Note(string content)
+        public Note(string content, int projectId)
         {
             Content = content;
             CreatedDate = DateTime.Now;
+            ProjectId = projectId;
         }
     }
 }

@@ -1,41 +1,44 @@
-﻿using CodeAgenda.Domain.Entities.Activities;
+﻿using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeAgenda.Domain.Entities.Persons
+namespace CodeAgenda.Domain.Entities.Users
 {
-    public class Person : Entity
+    public class User : Entity
     {
         #region Properties
 
         /// <summary>
-        /// Name of the person.
+        /// Name of the User.
         /// </summary>
         public string Name { get; set; }    
 
         /// <summary>
-        /// First name of the person.
+        /// First name of the User.
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Email of the person.
+        /// Email of the User.
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// Activities related to the person.
+        /// Assignments related to the User.
         /// </summary>
-        public List<Activity> Activities { get; set; } = new List<Activity>();
+        [NotMapped]
+        public List<Assignment> Assignments { get; set; } = new List<Assignment>();
 
         /// <summary>
-        /// Projects related to the person.
+        /// Projects related to the User.
         /// </summary>
+        [NotMapped]
         public List<Project> Projects { get; } = new List<Project>();
 
         #endregion Properties
@@ -43,15 +46,15 @@ namespace CodeAgenda.Domain.Entities.Persons
         /// <summary>
         /// Required by EntityFrameworkCore for migration.
         /// </summary>
-        protected Person() { }
+        protected User() { }
 
         /// <summary>
-        /// Instance an object of Person
+        /// Instance an object of User
         /// </summary>
-        /// <param name="name">Name of the person.</param>
-        /// <param name="firstName">First name of the person.</param>
-        /// <param name="email">Email of the person.</param>
-        public Person(string name, string firstName, string email)
+        /// <param name="name">Name of the User.</param>
+        /// <param name="firstName">First name of the User.</param>
+        /// <param name="email">Email of the User.</param>
+        public User(string name, string firstName, string email)
         {
             Name = name;
             FirstName = firstName;
