@@ -22,6 +22,16 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// </summary>
         public Color Color { get; set; }
 
+        /// <summary>
+        /// The project associated with the category.
+        /// </summary>
+        public Project Project { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the project
+        /// </summary>
+        public Guid ProjectId { get; set; }
+
         #endregion Properties
 
         /// <summary>
@@ -34,7 +44,7 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// </summary>
         /// <param name="name">The name of the category.</param>
         /// <param name="color">The color associated with the category.</param>
-        /// <param name="id">Entity identifier.</param>
+        /// <param name="id">EThe unique identifier for the category</param>
         public Category(
             string name,
             Color color,
