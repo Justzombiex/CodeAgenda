@@ -47,33 +47,38 @@ namespace CodeAgenda.Domain.Entities.Projects
         public Category Category { get; set; }
 
         /// <summary>
-        /// Associated user identifier.
+        /// User of the project
         /// </summary>
-        public int UserId { get; set; }
+        public User User { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the user
+        /// </summary>
+        public Guid UserID { get; set; }
 
         /// <summary>
         /// List of Assignments related to the project
         /// </summary>
         [NotMapped]
-        public List<Assignment> Assignments = new List<Assignment>();
+        public List<Assignment> Assignments;
 
         /// <summary>
         /// Tags related to the project
         /// </summary>
         [NotMapped]
-        public List<Tag> tagsProject = new List<Tag>();
+        public List<Tag> Tags;
 
         /// <summary>
         /// Notes related to the project
         /// </summary>
         [NotMapped]
-        public List<Note> notesProject = new List<Note>();
+        public List<Note> Notes;
 
         /// <summary>
         /// Notifications
         /// </summary>
         [NotMapped]
-        public List<Notification> Notifications { get; } = new List<Notification>();
+        public List<Notification> Notifications;
 
         #endregion Properties
 
@@ -89,14 +94,24 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// <param name="description">Description of the project</param>
         /// <param name="startDate">Start date of the project</param>
         /// <param name="endDate">End date of the project</param>
-        /// <param name="userId">User associated id</param>
-        public Project(string name, string description, DateTime startDate, DateTime endDate, int userId)
+        /// <param name="id">The unique identifier for the project</param>
+        public Project(string name,
+            string description,
+            DateTime startDate,
+            DateTime endDate,
+            Guid id) :
+            base(id)
         {
             Name = name;
             Description = description;
             StartDate = startDate;
             EndDate = endDate;
-            UserId = userId;
+            Progress = 0;
+            Assignments = new List<Assignment>();
+            Tags = new List<Tag>();
+            Notes = new List<Note>();
+            Notifications = new List<Notification>();
+
         }
     }
 }

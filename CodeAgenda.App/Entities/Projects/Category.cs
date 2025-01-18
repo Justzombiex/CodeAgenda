@@ -22,29 +22,28 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// </summary>
         public Color Color { get; set; }
 
-        /// <summary>
-        /// Associated project identifier.
-        /// </summary>
-        public int ProjectId { get; set; }
-
         #endregion Properties
-      
+
         /// <summary>
         /// Required by EntityFrameworkCore for migration.
         /// </summary>
         protected Category() { }
-        
+
         /// <summary>
         /// Instance an object of Category.
         /// </summary>
         /// <param name="name">The name of the category.</param>
         /// <param name="color">The color associated with the category.</param>
-        public Category(string name, Color color, int projectId)
+        /// <param name="id">Entity identifier.</param>
+        public Category(
+            string name,
+            Color color,
+            Guid id)
+            : base(id)
         {
             Name = name;
             Color = color;
-            ProjectId = projectId;
-        }  
+        }
     }
 }
 

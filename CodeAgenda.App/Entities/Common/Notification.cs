@@ -1,4 +1,6 @@
-﻿using CodeAgenda.Domain.Entities.Users;
+﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Projects;
+using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +29,24 @@ namespace CodeAgenda.Domain.Entities.Common
         public bool IsRead { get; set; }
 
         /// <summary>
-        /// Associated project identifier.
+        /// The project to which this note is associated.
         /// </summary>
-        public int ProjectId { get; set; }
+        public Project Project { get; set; }
+
+        /// <summary>
+        /// The assignment to which this note is associated.
+        /// </summary>
+        public Assignment Assignment { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the project associated with this note.
+        /// </summary>
+        public Guid ProjectId { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the assignment associated with this note.
+        /// </summary>
+        public Guid AssigmetnId { get; set; }
 
         #endregion Properties
 
@@ -44,13 +61,17 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <param name="message">Message of the notification.</param>
         /// <param name="reminderDate">Reminder date of the notification</param>
         /// <param name="isRead">Indicates if the notification is read</param>
-        /// <param name="projectId">Project associated Id</param>
-        public Notification(string message, DateTime reminderDate, bool isRead, int projectId)
+        /// <param name="projectId">The unique identifier for the notification</param>
+        public Notification(
+            string message,
+            DateTime reminderDate,
+            bool isRead,
+            Guid id)
+            : base(id)
         {
             Message = message;
             ReminderDate = reminderDate;
             IsRead = isRead;
-            ProjectId = projectId;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Projects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +28,24 @@ namespace CodeAgenda.Domain.Entities.Common
         public DateTime LastModifiedDate { get; set; }
 
         /// <summary>
-        /// Associated project identifier.
+        /// The project to which this note is associated.
         /// </summary>
-        public int ProjectId { get; set; }
+        public Project Project { get; set; }
+
+        /// <summary>
+        /// The assignment to which this note is associated.
+        /// </summary>
+        public Assignment Assignment { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the assignment associated with this note.
+        /// </summary>
+        public Guid AssigmetnId { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the project associated with this note.
+        /// </summary>
+        public Guid ProjectId { get; set; }
 
         #endregion Properties
 
@@ -41,11 +58,15 @@ namespace CodeAgenda.Domain.Entities.Common
         /// Initializes an instance of Note.
         /// </summary>
         /// <param name="content">The content of the note.</param>
-        public Note(string content, int projectId)
+        /// <param name="id">The unique identifier for the note.</param>
+        public Note(
+            string content,
+            Guid id)
+            : base(id)
         {
             Content = content;
             CreatedDate = DateTime.Now;
-            ProjectId = projectId;
+            LastModifiedDate = DateTime.Now;
         }
     }
 }

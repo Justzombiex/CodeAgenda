@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Common;
+using CodeAgenda.Domain.Entities.Projects;
 
 namespace CodeAgenda.Domain.Entities.Assignments
 {
@@ -21,6 +23,18 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// </summary> 
         public Color Color { get; set; }
 
+        /// <summary>
+        /// The assignments associated with this tag.
+        /// </summary>
+        [NotMapped]
+        public List<Assignment> Assignments { get; private set; }
+
+        /// <summary>
+        /// The projects associated with this tag.
+        /// </summary>
+        [NotMapped]
+        public List<Project> Projects { get; private set; }
+
         #endregion Properties
 
         /// <summary>
@@ -33,10 +47,16 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// </summary>
         /// <param name="name">The name of the tag.</param>
         /// <param name="color">The color associated with the tag.</param>
-        public Tag(string name, Color color) 
-        { 
-            Name = name; 
-            Color = color; 
+        /// <param name="id">The unique identifier for the tag</param>
+        public Tag(string name,
+            Color color,
+            Guid id)
+            : base(id)
+        {
+            Name = name;
+            Color = color;
+            Assignments = new List<Assignment>();
+            Projects = new List<Project>();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Common;
+using CodeAgenda.Domain.Entities.Projects;
 using CodeAgenda.Domain.Entities.Types;
 
 namespace CodeAgenda.Domain.Entities.Assignments
@@ -31,24 +32,35 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// <summary>
         /// Status of the Assignment.
         /// </summary>
-        public Status Status { get; set;}
+        public Status Status { get; set; }
 
         /// <summary>
         /// Priority of the Assignment.
         /// </summary>
-        public Priority Priority { get; set;}
+        public Priority Priority { get; set; }
+
+        /// <summary>
+        /// Project related to the Assignment.
+        /// </summary>
+        public Project Project { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the project
+        /// </summary>
+        public Guid ProjectId { get; set; }
+
 
         /// <summary>
         /// Tags related to the Assignment.
         /// </summary>
         [NotMapped]
-        public List<Tag> TagsAssignment = new List<Tag>();
+        public List<Tag> Tags;
 
         /// <summary>
         /// Notes related to the Assignment.
         /// </summary>
         [NotMapped]
-        public List<Note> NotesAssignment= new List<Note>();
+        public List<Note> Notes;
 
         #endregion
 
@@ -64,12 +76,20 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// <param name="description">Description of the Assignment, could be empty.</param>
         /// <param name="finishDate">Finish of the Assignment.</param>
         /// <param name="status">Status of the Assignment.</param>
-        public Assignment(string name, string description, DateTime finishDate, Status status)
+        /// <param name="id">The unique identifier for the assigment</param>
+        public Assignment(string name,
+            string description,
+            DateTime finishDate,
+            Status status,
+            Guid id)
+            : base(id)
         {
             Name = name;
             Description = description;
             FinishDate = finishDate;
             Status = status;
+            Tags = new List<Tag>();
+            Notes = new List<Note>();
         }
     }
 }

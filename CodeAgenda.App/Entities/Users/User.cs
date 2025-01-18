@@ -17,7 +17,7 @@ namespace CodeAgenda.Domain.Entities.Users
         /// <summary>
         /// Name of the User.
         /// </summary>
-        public string Name { get; set; }    
+        public string Name { get; set; }
 
         /// <summary>
         /// First name of the User.
@@ -28,12 +28,6 @@ namespace CodeAgenda.Domain.Entities.Users
         /// Email of the User.
         /// </summary>
         public string Email { get; set; }
-
-        /// <summary>
-        /// Assignments related to the User.
-        /// </summary>
-        [NotMapped]
-        public List<Assignment> Assignments { get; set; } = new List<Assignment>();
 
         /// <summary>
         /// Projects related to the User.
@@ -54,7 +48,11 @@ namespace CodeAgenda.Domain.Entities.Users
         /// <param name="name">Name of the User.</param>
         /// <param name="firstName">First name of the User.</param>
         /// <param name="email">Email of the User.</param>
-        public User(string name, string firstName, string email)
+        public User(string name,
+            string firstName,
+            string email,
+            Guid id)
+            : base(id)
         {
             Name = name;
             FirstName = firstName;

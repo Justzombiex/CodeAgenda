@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeAgenda.Domain", "CodeAgenda.App\CodeAgenda.Domain.csproj", "{7DE1E227-177F-43FA-87F1-A19F4CC10490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.Domain", "CodeAgenda.App\CodeAgenda.Domain.csproj", "{7DE1E227-177F-43FA-87F1-A19F4CC10490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeAgenda.DataAccess", "CodeAgenda.DataAccess\CodeAgenda.DataAccess.csproj", "{CA069E2C-487B-4073-B584-508150662D6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.DataAccess", "CodeAgenda.DataAccess\CodeAgenda.DataAccess.csproj", "{CA069E2C-487B-4073-B584-508150662D6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeAgenda.ConsoleApp", "CodeAgenda.ConsoleApp\CodeAgenda.ConsoleApp.csproj", "{4D3ED9CA-655D-4CE0-97A7-8066FAB65C8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CA069E2C-487B-4073-B584-508150662D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA069E2C-487B-4073-B584-508150662D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA069E2C-487B-4073-B584-508150662D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D3ED9CA-655D-4CE0-97A7-8066FAB65C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D3ED9CA-655D-4CE0-97A7-8066FAB65C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D3ED9CA-655D-4CE0-97A7-8066FAB65C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D3ED9CA-655D-4CE0-97A7-8066FAB65C8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

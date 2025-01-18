@@ -16,13 +16,29 @@ namespace CodeAgenda.Domain.Entities.Common
         #region Properties
 
         /// <summary>
-        /// DB Identifier.
+        /// Identifier on the data carrier.
         /// </summary>
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// Required by EntityFramework.
+        /// </summary>
+        protected Entity()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Entity identifier.</param>
+        protected Entity(Guid id)
+        {
+            Id = id;
+        }
 
     }
 }
