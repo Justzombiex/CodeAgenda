@@ -1,4 +1,6 @@
 ﻿using CodeAgenda.DataAccess.Abstract.Common;
+using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Common;
 using System;
 using System.Collections.Generic;
@@ -8,20 +10,16 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public partial class ApplicationRepository : INotificationRepository
+    public class NotificationRepository 
+        : RepositoryBase, INotificationRepository
     {
-        /// <summary>
-        /// Create a Notification in the DB.
-        /// </summary>
-        /// <param name="message">Message of the notification.</param>
-        /// <param name="reminderDate">Reminder date of the notification</param>
-        /// <param name="isRead">Indicates if the notification is read</param>
-        /// <param name="projectId">Project associated Id</param>
-        public Notification CreateNotification(string message, DateTime reminderDate, bool isRead, int projectId)
+        public NotificationRepository(ApplicationContext context) : base(context)
         {
-            Notification notification = new Notification(message, reminderDate, isRead, projectId);
-            _context.Add(notification);
-            return notification;
+        }
+
+        public void AddNotification(Notification notification)
+        {
+            _context.Notification.Add(notification);
         }
 
         /// <summary>
@@ -29,7 +27,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// </summary>
         /// <param name="id">Notification Id</param>
         /// <returns> Notification to exist in DB, otherwise <see langword="null"/></returns>
-        Notification? INotificationRepository.Get(int id)
+        Notification? INotificationRepository.Get(Guid id)
         {
             return _context.Set<Notification>().Find(id);
         }
@@ -40,7 +38,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="Notification">Notification to update.</param>
         public void Update(Notification Notification)
         {
-            _context.Set<Notification>().Update(Notification);
+            _context.Notification.Update(Notification);
         }
 
         /// <summary>
@@ -49,7 +47,8 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="Notification">Notification to delete.</param>
         public void Delete(Notification Notification)
         {
-            _context.Remove(Notification);
+            _context.Notification.Remove(Notification);
         }
+
     }
 }

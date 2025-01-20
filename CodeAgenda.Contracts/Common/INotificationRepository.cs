@@ -7,23 +7,20 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Abstract.Common
 {
-    internal interface INotificationRepository : IRepository
+    public interface INotificationRepository
     {
         /// <summary>
-        /// Create a Notification in the DB.
+        /// Add a Notification in the DB.
         /// </summary>
-        /// <param name="message">Message of the notification.</param>
-        /// <param name="reminderDate">Reminder date of the notification</param>
-        /// <param name="isRead">Indicates if the notification is read</param>
-        /// <param name="projectId">Project associated Id</param>
-        Notification CreateNotification(string message, DateTime reminderDate, bool isRead, int projectId);
+        /// <param name="notification">Notification to add.</param>
+        void AddNotification(Notification notification);
 
         /// <summary>
         /// Gets a Notification from DB.
         /// </summary>
         /// <param name="id">Notification Id</param>
         /// <returns> Notification to exist in DB, otherwise <see langword="null"/></returns>
-        Notification? Get(int id);
+        Notification? Get(Guid id);
 
         /// <summary>
         /// Update a Notification in the DB.

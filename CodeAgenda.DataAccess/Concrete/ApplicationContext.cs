@@ -11,6 +11,12 @@ using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.Domain.Entities.Projects;
 using System.Drawing;
 using CodeAgenda.DataAccess.FluentConfigurations;
+using CodeAgenda.Domain.Entities.Relations;
+using CodeAgenda.DataAccess.FluentConfigurations.Abstract;
+using CodeAgenda.DataAccess.FluentConfigurations.Relations;
+using CodeAgenda.DataAccess.FluentConfigurations.Common;
+using CodeAgenda.DataAccess.FluentConfigurations.Projects;
+using CodeAgenda.DataAccess.FluentConfigurations.Users;
 
 namespace CodeAgenda.DataAccess.Concrete
 {
@@ -56,13 +62,23 @@ namespace CodeAgenda.DataAccess.Concrete
         /// </summary>
         public DbSet<Project> Project { get; set; }
 
+        /// <summary>
+        /// TagAndProjectRelation table
+        /// </summary>
+        public DbSet<TagAndProjectRelation> TagAndProjectRelation { get; set; }
+
+        /// <summary>
+        /// TagAndProjectAssignment table
+        /// </summary>
+        public DbSet<TagAndAssignmentRelation> TagAndAssignmentRelation { get; set; }
+
         #endregion
 
 
         /// <summary>
         /// Requerired by EntityFrameworkCore for migration.
         /// </summary>
-        public ApplicationContext()
+        protected ApplicationContext()
         {
         }
 
@@ -98,32 +114,16 @@ namespace CodeAgenda.DataAccess.Concrete
         {
             base.OnModelCreating(modelBuilder);
 
-            #region Base classes mapping
+            modelBuilder.ApplyConfiguration(new AssignmentEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new TagEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new NoteEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new NotificationEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new ProjectEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new UserEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new TagAndAssignmentEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new TagAndProjectEntityTypeConfigurationBase());
 
-            modelBuilder.Entity<Assignment>().ToTable("Assignments");
-
-            modelBuilder.Entity<Note>().ToTable("Notes");
-
-            modelBuilder.Entity<User>().ToTable("Users");
-
-            modelBuilder.Entity<Project>().ToTable("Projects");
-
-            modelBuilder.Entity<Category>().ToTable("Categories");
-            modelBuilder.Entity<Category>().Property(p => p.Color)
-                .HasConversion(
-                c => c.ToArgb(),
-                c => Color.FromArgb(c));
-
-            modelBuilder.Entity<Tag>().ToTable("Tags");
-            modelBuilder.Entity<Tag>().Property(p => p.Color)
-                .HasConversion(
-                c => c.ToArgb(),
-                c => Color.FromArgb(c));
-
-
-            #endregion
-
-            modelBuilder.ApplyConfiguration(new AssignmentFluentConfiguration());
         }
 
 
@@ -155,7 +155,7 @@ namespace CodeAgenda.DataAccess.Concrete
             }
             catch (Exception)
             {
-                //handle errror here.. means DLL has no sattelite configuration file.
+                //handle error here.. means DLL has no sattelite configuration file.
                 throw;
             }
 

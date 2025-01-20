@@ -34,19 +34,9 @@ namespace CodeAgenda.Domain.Entities.Common
         public Project Project { get; set; }
 
         /// <summary>
-        /// The assignment to which this note is associated.
-        /// </summary>
-        public Assignment Assignment { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the project associated with this note.
+        /// The unique identifier of the project associated with this notification.
         /// </summary>
         public Guid ProjectId { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the assignment associated with this note.
-        /// </summary>
-        public Guid AssigmetnId { get; set; }
 
         #endregion Properties
 

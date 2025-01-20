@@ -1,5 +1,9 @@
 ﻿using CodeAgenda.DataAccess.Abstract.Assignments;
+using CodeAgenda.DataAccess.Abstract.Common;
+using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,35 +13,44 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public partial class ApplicationRepository : ITagRepository
+    public class TagRepository 
+        : RepositoryBase, ITagRepository
     {
-        /// <summary>
-        /// Create a Tag in the DB.
-        /// </summary>
-        /// <param name="name">The name of the tag.</param>
-        /// <param name="color">The color associated to the tag</param>
-        /// <returns></returns>
-        public Tag CreateTag(string name, Color color)
+        public TagRepository(ApplicationContext context) : base(context)
         {
-            Tag tag = new Tag(name, color);
-            _context.Add(tag);
-            return tag;
         }
 
-        Tag? ITagRepository.Get(int id)
+        public void AddTag(Tag Tag)
+        {
+            _context.Tag.Add(Tag);
+        }
+
+        /// <summary>
+        /// Gets a Tag from DB.
+        /// </summary>
+        /// <param name="id">Tag Id</param>
+        /// <returns> Tag to exist in DB, otherwise <see langword="null"/></returns>
+        Tag? ITagRepository.Get(Guid id)
         {
             return _context.Set<Tag>().Find(id);
         }
 
-        public void Update(Tag tag)
+        /// <summary>
+        /// Update a Tag in the DB.
+        /// </summary>
+        /// <param name="Tag">Tag to update.</param>
+        public void Update(Tag Tag)
         {
-            
-            _context.Set<Tag>().Update(tag);
+            _context.Tag.Update(Tag);
         }
 
-        public void Delete(Tag tag)
+        /// <summary>
+        /// Delete a Tag in the DB.
+        /// </summary>
+        /// <param name="Tag">Tag to delete.</param>
+        public void Delete(Tag Tag)
         {
-            _context.Remove(tag);
+            _context.Tag.Remove(Tag);
         }
 
     }

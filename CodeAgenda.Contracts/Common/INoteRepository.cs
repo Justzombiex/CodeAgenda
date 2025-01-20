@@ -8,21 +8,20 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Abstract.Common
 {
-    public interface INoteRepository : IRepository
+    public interface INoteRepository
     {
         /// <summary>
-        /// Create a Note in the DB.
+        /// Add a note in the DB.
         /// </summary>
-        /// <param name="content">The content of the note.</param>
-        /// <param name="projectId">Associated project id</param>
-        Note CreateNote(string content, int projectId);
+        /// <param name="note">Note to add.</param>
+        void AddNote(Note note);
 
         /// <summary>
         /// Gets a Note from DB.
         /// </summary>
         /// <param name="id">Note Id</param>
         /// <returns> Note to exist in DB, otherwise <see langword="null"/></returns>
-        Note? Get(int id);
+        Note? Get(Guid id);
 
         /// <summary>
         /// Update a Note in the DB.

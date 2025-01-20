@@ -1,6 +1,7 @@
-﻿using CodeAgenda.DataAccess.Abstract.Categorys;
-using CodeAgenda.DataAccess.Abstract.Common;
+﻿using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Projects;
+using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 using System;
@@ -12,19 +13,17 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public partial class ApplicationRepository : ICategoryRepository
+    public class CategoryRepository 
+        : RepositoryBase, ICategoryRepository
     {
-        /// <summary>
-        /// Creates a category in DB.
-        /// </summary>
-        /// <param name="name">The name of the category.</param>
-        /// <param name="color">The color associated with the category.</param>
-        /// <param name="projectId">project associated id</param>
-        public Category CreateCategory(string name, Color color, int projectId)
+
+        public CategoryRepository(ApplicationContext context) : base(context)
         {
-            Category category = new Category(name, color, projectId);
-            _context.Add(category);
-            return category;
+        }
+
+        public void AddCategory(Category Category)
+        {
+            _context.Category.Add(Category);
         }
 
         /// <summary>
@@ -32,7 +31,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// </summary>
         /// <param name="id">Category Id</param>
         /// <returns> Category to exist in DB, otherwise <see langword="null"/></returns>
-        Category? ICategoryRepository.Get(int id)
+        Category? ICategoryRepository.Get(Guid id)
         {
             return _context.Set<Category>().Find(id);
         }
@@ -43,7 +42,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="Category">Category to update.</param>
         public void Update(Category Category)
         {
-            _context.Set<Category>().Update(Category);
+            _context.Category.Update(Category);
         }
 
         /// <summary>
@@ -52,7 +51,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="Category">Category to delete.</param>
         public void Delete(Category Category)
         {
-            _context.Remove(Category);
+            _context.Category.Remove(Category);
         }
     }
 }

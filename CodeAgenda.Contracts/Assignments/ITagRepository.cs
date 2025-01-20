@@ -8,21 +8,20 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Abstract.Assignments
 {
-    public interface ITagRepository : IRepository
+    public interface ITagRepository
     {
         /// <summary>
-        /// Create a Tag in the DB.
+        /// Add a atg in the DB.
         /// </summary>
-        /// <param name="name">The name of the tag.</param>
-        /// <param name="color">The color associated with the tag.</param>
-        Tag CreateTag(string name, Color color);
+        /// <param name="tag">Tag to add.</param>
+        void AddTag(Tag tag);
 
         /// <summary>
         /// Gets a Tag from DB.
         /// </summary>
         /// <param name="id">Tag Id</param>
         /// <returns> Tag to exist in DB, otherwise <see langword="null"/></returns>
-        Tag? Get(int id);
+        Tag? Get(Guid id);
 
         /// <summary>
         /// Update a Tag in the DB.

@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Abstract\Projects\**" />
-    <EmbeddedResource Remove="Abstract\Projects\**" />
-    <None Remove="Abstract\Projects\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -23,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodeAgenda.App\CodeAgenda.Domain.csproj" />
+    <ProjectReference Include="..\CodeAgenda.Contracts\CodeAgenda.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

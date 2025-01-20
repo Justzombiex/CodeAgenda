@@ -1,4 +1,5 @@
-﻿using CodeAgenda.Domain.Entities.Users;
+﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,20 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Abstract.Users
 {
-    public interface IUserRepository :IRepository
+    public interface IUserRepository
     {
         /// <summary>
-        /// Creates a user in DB.
+        /// Add an User in the DB.
         /// </summary>
-        /// <param name="name">Name of the User.</param>
-        /// <param name="firstName">First name of the User.</param>
-        /// <param name="email">Email of the User.</param>
-        User CreateUser(string name, string firstName, string email);
+        /// <param name="user">User to add.</param>
+        void AddUser(User user);
 
         /// <summary>
         /// Gets a User from DB.
         /// </summary>
         /// <param name="id">User Id</param>
         /// <returns> User to exist in DB, otherwise <see langword="null"/></returns>
-        User? Get(int id);
+        User? Get(Guid id);
 
         /// <summary>
         /// Update a User in the DB.

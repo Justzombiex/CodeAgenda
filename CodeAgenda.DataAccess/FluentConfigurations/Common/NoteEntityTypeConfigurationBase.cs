@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
 
-namespace CodeAgenda.DataAccess.FluentConfigurations
+namespace CodeAgenda.DataAccess.FluentConfigurations.Common
 {
-    /// <summary>
-    /// Define the configuration of <see cref="Note/> for EntityFrameworkCore.
-    /// </summary> 
-    internal class NoteFluentConfiguration : IEntityTypeConfiguration<Note>
+    public class NoteEntityTypeConfigurationBase
+        : EntityTypeConfigurationBase<Note>
     {
-        public void Configure(EntityTypeBuilder<Note> builder)
+        public override void Configure(EntityTypeBuilder<Note> builder)
         {
             builder.ToTable("Notes");
+            base.Configure(builder);
         }
     }
 }

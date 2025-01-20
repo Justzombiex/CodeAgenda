@@ -7,24 +7,20 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Abstract.Projects
 {
-    public interface IProjectRepository : IRepository
+    public interface IProjectRepository
     {
         /// <summary>
-        /// Creates a project in DB.
+        /// Add a Project in the DB.
         /// </summary>
-        /// <param name="name">Name of the project</param>
-        /// <param name="description">Description of the project</param>
-        /// <param name="startDate">Start date of the project</param>
-        /// <param name="endDate">End date of the project</param>
-        /// <param name="userId">User associated id</param>
-        Project CreateProject(string name, string description, DateTime startDate, DateTime endDate, int userId);
+        /// <param name="project">Project to add.</param>
+        void AddProject(Project project);
 
         /// <summary>
         /// Gets a Project from DB.
         /// </summary>
         /// <param name="id">Project Id</param>
         /// <returns> Project to exist in DB, otherwise <see langword="null"/></returns>
-        Project? Get(int id);
+        Project? Get(Guid id);
 
         /// <summary>
         /// Update a Project in the DB.

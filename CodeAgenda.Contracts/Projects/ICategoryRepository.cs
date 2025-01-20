@@ -6,23 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeAgenda.DataAccess.Abstract.Categorys
+namespace CodeAgenda.DataAccess.Abstract.Projects
 {
-    public interface ICategoryRepository : IRepository
+    public interface ICategoryRepository
     {
         /// <summary>
-        /// Creates a category in DB.
+        /// Add a Category in the DB.
         /// </summary>
-        /// <param name="name">The name of the category.</param>
-        /// <param name="color">The color associated with the category.</param>
-        Category CreateCategory(string name, Color color, int projectId);
+        /// <param name="category">Category to add.</param>
+        void AddCategory(Category category);
 
         /// <summary>
         /// Gets a Category from DB.
         /// </summary>
         /// <param name="id">Category Id</param>
         /// <returns> Category to exist in DB, otherwise <see langword="null"/></returns>
-        Category? Get(int id);
+        Category? Get(Guid id);
 
         /// <summary>
         /// Update a Category in the DB.

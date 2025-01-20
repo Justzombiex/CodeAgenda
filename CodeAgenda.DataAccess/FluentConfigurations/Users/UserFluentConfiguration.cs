@@ -8,17 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Users;
+using CodeAgenda.Domain.Entities.Projects;
+using CodeAgenda.DataAccess.FluentConfigurations.Common;
+using CodeAgenda.Domain.Entities.Common;
 
-namespace CodeAgenda.DataAccess.FluentConfigurations
+namespace CodeAgenda.DataAccess.FluentConfigurations.Users
 {
     /// <summary>
     /// Define the configuration of <see cref="User"/> for EntityFrameworkCore.
     /// </summary> 
-    internal class UserFluentConfiguration : IEntityTypeConfiguration<User>
+    public class UserEntityTypeConfigurationBase
+        : EntityTypeConfigurationBase<User>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public override void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("Users");
+            builder.HasMany(u => u.Projects)
+                .WithOne(p => p.User);
+            base.Configure(builder);
         }
     }
 }

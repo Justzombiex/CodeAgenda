@@ -1,5 +1,9 @@
-﻿using CodeAgenda.DataAccess.Abstract.Users;
+﻿using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Users;
+using CodeAgenda.DataAccess.Abstract.Users;
+using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Common;
+using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.Domain.Entities.Users;
 using System;
@@ -10,19 +14,16 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public partial class ApplicationRepository : IUserRepository
+    public class UserRepository 
+        : RepositoryBase, IUserRepository
     {
-        /// <summary>
-        /// Creates a user in DB.
-        /// </summary>
-        /// <param name="name">Name of the User.</param>
-        /// <param name="firstName">First name of the User.</param>
-        /// <param name="email">Email of the User.</param>
-        public User CreateUser(string name, string firstName, string email)
+        public UserRepository(ApplicationContext context) : base(context)
         {
-            User user = new User(name, firstName, email);
-            _context.Add(user);
-            return user;
+        }
+
+        public void AddUser(User User)
+        {
+            _context.User.Add(User);
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// </summary>
         /// <param name="id">User Id</param>
         /// <returns> User to exist in DB, otherwise <see langword="null"/></returns>
-        User? IUserRepository.Get(int id)
+        User? IUserRepository.Get(Guid id)
         {
             return _context.Set<User>().Find(id);
         }
@@ -41,7 +42,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="User">User to update.</param>
         public void Update(User User)
         {
-            _context.Set<User>().Update(User);
+            _context.User.Update(User);
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="User">User to delete.</param>
         public void Delete(User User)
         {
-            _context.Remove(User);
+            _context.User.Remove(User);
         }
     }
 }

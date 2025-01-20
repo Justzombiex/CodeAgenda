@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeAgenda.Domain.Entities.Utils
+namespace CodeAgenda.Domain.Entities.Relations
 {
     public class TagAndProjectRelation : Entity
     {
-        public Guid PersonId { get; set; }
+        public Guid ProjectId { get; set; }
 
         public Guid TagId { get; set; }
 

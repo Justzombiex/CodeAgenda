@@ -1,5 +1,8 @@
-﻿using CodeAgenda.DataAccess.Abstract.Projects;
+﻿using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Projects;
+using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Common;
+using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 using System;
 using System.Collections.Generic;
@@ -9,21 +12,16 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public partial class ApplicationRepository : IProjectRepository
+    public class ProjectRepository 
+        : RepositoryBase, IProjectRepository
     {
-        /// <summary>
-        /// Creates a project in DB.
-        /// </summary>
-        /// <param name="name">Name of the project</param>
-        /// <param name="description">Description of the project</param>
-        /// <param name="startDate">Start date of the project</param>
-        /// <param name="endDate">End date of the project</param>
-        /// <param name="userId">User associated id</param>
-        public Project CreateProject(string name, string description, DateTime startDate, DateTime endDate, int userId)
+        public ProjectRepository(ApplicationContext context) : base(context)
         {
-            Project project = new Project(name, description, startDate, endDate, userId);
-            _context.Add(project);
-            return project;
+        }
+
+        public void AddProject(Project Project)
+        {
+            _context.Project.Add(Project);
         }
 
         /// <summary>
@@ -31,7 +29,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// </summary>
         /// <param name="id">Project Id</param>
         /// <returns> Project to exist in DB, otherwise <see langword="null"/></returns>
-        Project? IProjectRepository.Get(int id)
+        Project? IProjectRepository.Get(Guid id)
         {
             return _context.Set<Project>().Find(id);
         }
@@ -42,7 +40,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="Project">Project to update.</param>
         public void Update(Project Project)
         {
-            _context.Set<Project>().Update(Project);
+            _context.Project.Update(Project);
         }
 
         /// <summary>
@@ -51,7 +49,7 @@ namespace CodeAgenda.DataAccess.Repositories
         /// <param name="Project">Project to delete.</param>
         public void Delete(Project Project)
         {
-            _context.Remove(Project);
+            _context.Project.Remove(Project);
         }
     }
 }

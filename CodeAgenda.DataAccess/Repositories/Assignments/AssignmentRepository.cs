@@ -1,5 +1,8 @@
-﻿using CodeAgenda.DataAccess.Repositories.Assignments;
+﻿using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Assignments;
+using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Types;
 using System;
 using System.Collections.Generic;
@@ -9,28 +12,39 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public partial class ApplicationRepository : IAssignmentRepository
+    /// <summary>
+    /// Implementación del repositorio <see cref="IAssignmentRepository"/>.
+    /// </summary>
+    public class AssignmentRepository
+        : RepositoryBase, IAssignmentRepository
     {
-        public Assignment CreateAssignment(string name, string description, DateTime finishDate, Status status)
+        public AssignmentRepository(ApplicationContext context) : base(context)
         {
-            Assignment Assignment = new Assignment(name, description, finishDate, status);
-            _context.Add(Assignment);
-            return Assignment;
         }
 
-        Assignment? IAssignmentRepository.Get(int id)
+        public void AddAssignment(Assignment Assignment)
         {
-            return _context.Set<Assignment>().Find(id);
-        }
-
-        public void Update(Assignment Assignment)
-        {
-            _context.Set<Assignment>().Update(Assignment);
+            _context.Assignment.Add(Assignment);
         }
 
         public void Delete(Assignment Assignment)
         {
-            _context.Remove(Assignment);
+            _context.Assignment.Remove(Assignment);
+        }
+
+        public Assignment? Get(Guid id)
+        {
+            return _context.Assignment.FirstOrDefault(x => x.Id == id);
+        }
+
+        public IEnumerable<Assignment> GetAllAssignments()
+        {
+            return _context.Assignment.ToList();
+        }
+
+        public void Update(Assignment Assignment)
+        {
+            _context.Assignment.Update(Assignment);
         }
     }
 }
