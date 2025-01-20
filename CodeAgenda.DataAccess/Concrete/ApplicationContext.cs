@@ -150,7 +150,7 @@ namespace CodeAgenda.DataAccess.Concrete
 
             try
             {
-                var connectionString = "Data Source = CodeAgendaDB.npgsql";
+                var connectionString = "Host=localhost;Database=CodeAgendaDB;Username=postgres;Password=Brianpiti$02";
                 optionsBuilder.UseNpgsql(connectionString);
             }
             catch (Exception)

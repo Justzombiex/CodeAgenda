@@ -8,7 +8,7 @@ namespace CodeAgenda.ConsoleApp
         static void Main(string[] args)
         {
             // Creando un contexto para interactuar con la Base de datos.
-            ApplicationContext appContext = new ApplicationContext("Host=localhost;Database=CodeAgendaDB;Username=postgres;Password=Brianpiti$02");
+            ApplicationContext appContext = new ApplicationContext("Host=localhost;Database=CodeAgendaDB;Username=postgres;Password=LACONTRASEÑA");
             // Verificando si la BD no existe
             if (!appContext.Database.CanConnect())
             {
