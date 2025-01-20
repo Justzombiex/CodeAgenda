@@ -20,7 +20,7 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
             builder.HasMany(a => a.Notes)
                 .WithOne(n => n.Assignment);
             builder.HasMany(a => a.Tags)
-                .WithMany(t => t.Assignments)
+                .WithMany(t => t.Assignments);
 
             base.Configure(builder);
         }
