@@ -21,7 +21,6 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
                 .WithOne(n => n.Assignment);
             builder.HasMany(a => a.Tags)
                 .WithMany(t => t.Assignments)
-                .UsingEntity("TagAndAssignments");
 
             base.Configure(builder);
         }

@@ -26,8 +26,7 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Projects
             builder.HasOne(c => c.Category)
                 .WithOne(p => p.Project);
             builder.HasMany(t => t.Tags)
-                .WithMany(p => p.Projects)
-                .UsingEntity("TagAndProjects");
+                .WithMany(p => p.Projects);
 
             base.Configure(builder);
         }
