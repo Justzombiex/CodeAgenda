@@ -8,16 +8,15 @@ namespace CodeAgenda.ConsoleApp
         static void Main(string[] args)
         {
             // Creando un contexto para interactuar con la Base de datos.
-            ApplicationContext appContext = new ApplicationContext("Host=localhost;Database=CodeAgendaDB;Username=postgres;Password=LACONTRASEÑA");
+            ApplicationContext appContext = new ApplicationContext("Host=localhost;Database=CodeAgendaDB;Username=postgres;Password=1234");
             // Verificando si la BD no existe
             if (!appContext.Database.CanConnect())
             {
+                Console.WriteLine("Cannot connect");
                 // Migrando base de datos. Este paso genera la BD con las tablas configuradas en su migración.
                 appContext.Database.Migrate();
             }
-            else { Console.WriteLine("Can not connect"); }
-
-            Console.WriteLine("Pasó el if");
+            else { Console.WriteLine("Can connect"); }
         }
     }
 }
