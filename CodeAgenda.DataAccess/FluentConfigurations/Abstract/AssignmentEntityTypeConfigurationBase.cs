@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.DataAccess.FluentConfigurations.Common;
+using CodeAgenda.Domain.Entities.Relations;
 
 namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
 {
@@ -20,7 +21,10 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
             builder.HasMany(a => a.Notes)
                 .WithOne(n => n.Assignment);
             builder.HasMany(a => a.Tags)
-                .WithMany(t => t.Assignments);
+                .WithMany(t => t.Assignments)
+                .UsingEntity<TagAssignments>(
+                   j => j.HasOne<Tag>().WithMany().HasForeignKey("TagId"),
+                   j => j.HasOne<Assignment>().WithMany().HasForeignKey("AssignmentId"));
 
             base.Configure(builder);
         }
