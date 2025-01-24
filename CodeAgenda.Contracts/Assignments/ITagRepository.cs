@@ -14,7 +14,7 @@ namespace CodeAgenda.DataAccess.Abstract.Assignments
         /// Add a atg in the DB.
         /// </summary>
         /// <param name="tag">Tag to add.</param>
-        void AddTag(Tag tag);
+        void Add(Tag tag);
 
         /// <summary>
         /// Gets a Tag from DB.
@@ -22,6 +22,13 @@ namespace CodeAgenda.DataAccess.Abstract.Assignments
         /// <param name="id">Tag Id</param>
         /// <returns> Tag to exist in DB, otherwise <see langword="null"/></returns>
         Tag? Get(Guid id);
+
+        /// <summary>
+        /// Gets all Tags from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Tag> GetAll();
 
         /// <summary>
         /// Update a Tag in the DB.

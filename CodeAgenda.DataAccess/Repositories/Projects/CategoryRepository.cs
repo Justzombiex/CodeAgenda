@@ -2,6 +2,7 @@
 using CodeAgenda.DataAccess.Abstract.Projects;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories.Common;
+using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 using System;
@@ -21,34 +22,26 @@ namespace CodeAgenda.DataAccess.Repositories
         {
         }
 
-        public void AddCategory(Category Category)
+        public void Add(Category Category)
         {
             _context.Category.Add(Category);
         }
 
-        /// <summary>
-        /// Gets a Category from DB.
-        /// </summary>
-        /// <param name="id">Category Id</param>
-        /// <returns> Category to exist in DB, otherwise <see langword="null"/></returns>
         Category? ICategoryRepository.Get(Guid id)
         {
             return _context.Set<Category>().Find(id);
         }
 
-        /// <summary>
-        /// Update a Category in the DB.
-        /// </summary>
-        /// <param name="Category">Category to update.</param>
+        public IEnumerable<Category> GetAll()
+        {
+            return _context.Category.ToList();
+        }
+
         public void Update(Category Category)
         {
             _context.Category.Update(Category);
         }
 
-        /// <summary>
-        /// Delete a Category in the DB.
-        /// </summary>
-        /// <param name="Category">Category to delete.</param>
         public void Delete(Category Category)
         {
             _context.Category.Remove(Category);

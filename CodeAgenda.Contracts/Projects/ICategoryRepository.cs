@@ -1,4 +1,5 @@
-﻿using CodeAgenda.Domain.Entities.Projects;
+﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Projects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,7 +15,7 @@ namespace CodeAgenda.DataAccess.Abstract.Projects
         /// Add a Category in the DB.
         /// </summary>
         /// <param name="category">Category to add.</param>
-        void AddCategory(Category category);
+        void Add(Category category);
 
         /// <summary>
         /// Gets a Category from DB.
@@ -22,6 +23,13 @@ namespace CodeAgenda.DataAccess.Abstract.Projects
         /// <param name="id">Category Id</param>
         /// <returns> Category to exist in DB, otherwise <see langword="null"/></returns>
         Category? Get(Guid id);
+
+        /// <summary>
+        /// Gets all Categories from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Category> GetAll();
 
         /// <summary>
         /// Update a Category in the DB.

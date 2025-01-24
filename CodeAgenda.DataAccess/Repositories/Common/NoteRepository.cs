@@ -18,34 +18,26 @@ namespace CodeAgenda.DataAccess.Repositories
         public NoteRepository(ApplicationContext context) : base(context)
         {
         }
-        public void AddNote(Note Note)
+        public void Add(Note Note)
         {
             _context.Note.Add(Note);
         }
 
-        /// <summary>
-        /// Gets a Note from DB.
-        /// </summary>
-        /// <param name="id">Note Id</param>
-        /// <returns> Note to exist in DB, otherwise <see langword="null"/></returns>
         Note? INoteRepository.Get(Guid id)
         {
             return _context.Set<Note>().Find(id);
         }
 
-        /// <summary>
-        /// Update a Note in the DB.
-        /// </summary>
-        /// <param name="Note">Note to update.</param>
+        public IEnumerable<Note> GetAll()
+        {
+            return _context.Note.ToList();
+        }
+
         public void Update(Note Note)
         {
             _context.Note.Update(Note);
         }
 
-        /// <summary>
-        /// Delete a Note in the DB.
-        /// </summary>
-        /// <param name="Note">Note to delete.</param>
         public void Delete(Note Note)
         {
             _context.Note.Remove(Note);

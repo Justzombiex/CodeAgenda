@@ -42,7 +42,7 @@ namespace CodeAgenda.DatatAccess.Tests
             Tag tag = new Tag(tagName, color, id);
 
             //Execute
-            _tagRepository.AddTag(tag);
+            _tagRepository.Add(tag);
             _unitOfWork.SaveChanges();
 
             //Assert

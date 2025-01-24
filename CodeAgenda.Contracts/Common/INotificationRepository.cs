@@ -1,4 +1,5 @@
-﻿using CodeAgenda.Domain.Entities.Common;
+﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CodeAgenda.DataAccess.Abstract.Common
         /// Add a Notification in the DB.
         /// </summary>
         /// <param name="notification">Notification to add.</param>
-        void AddNotification(Notification notification);
+        void Add(Notification notification);
 
         /// <summary>
         /// Gets a Notification from DB.
@@ -21,6 +22,13 @@ namespace CodeAgenda.DataAccess.Abstract.Common
         /// <param name="id">Notification Id</param>
         /// <returns> Notification to exist in DB, otherwise <see langword="null"/></returns>
         Notification? Get(Guid id);
+
+        /// <summary>
+        /// Gets all Notifications from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Notification> GetAll();
 
         /// <summary>
         /// Update a Notification in the DB.

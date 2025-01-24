@@ -1,4 +1,5 @@
-﻿using CodeAgenda.Domain.Entities.Projects;
+﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Projects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,21 @@ namespace CodeAgenda.DataAccess.Abstract.Projects
         /// Add a Project in the DB.
         /// </summary>
         /// <param name="project">Project to add.</param>
-        void AddProject(Project project);
+        void Add(Project project);
 
         /// <summary>
-        /// Gets a Project from DB.
+        /// Gets all Project from DB.
         /// </summary>
         /// <param name="id">Project Id</param>
         /// <returns> Project to exist in DB, otherwise <see langword="null"/></returns>
         Project? Get(Guid id);
+
+        /// <summary>
+        /// Gets all Projects from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Project> GetAll();
 
         /// <summary>
         /// Update a Project in the DB.

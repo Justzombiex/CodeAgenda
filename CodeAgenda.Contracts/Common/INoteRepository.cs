@@ -14,7 +14,7 @@ namespace CodeAgenda.DataAccess.Abstract.Common
         /// Add a note in the DB.
         /// </summary>
         /// <param name="note">Note to add.</param>
-        void AddNote(Note note);
+        void Add(Note note);
 
         /// <summary>
         /// Gets a Note from DB.
@@ -22,6 +22,13 @@ namespace CodeAgenda.DataAccess.Abstract.Common
         /// <param name="id">Note Id</param>
         /// <returns> Note to exist in DB, otherwise <see langword="null"/></returns>
         Note? Get(Guid id);
+
+        /// <summary>
+        /// Gets all Notes from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Note> GetAll();
 
         /// <summary>
         /// Update a Note in the DB.

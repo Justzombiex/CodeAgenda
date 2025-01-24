@@ -22,7 +22,7 @@ namespace CodeAgenda.DataAccess.Repositories
         {
         }
 
-        public void AddAssignment(Assignment Assignment)
+        public void Add(Assignment Assignment)
         {
             _context.Assignment.Add(Assignment);
         }
@@ -32,12 +32,12 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.Assignment.Remove(Assignment);
         }
 
-        public Assignment? Get(Guid id)
+        public Assignment? GetById(Guid id)
         {
             return _context.Assignment.FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<Assignment> GetAllAssignments()
+        public IEnumerable<Assignment> GetAll()
         {
             return _context.Assignment.ToList();
         }

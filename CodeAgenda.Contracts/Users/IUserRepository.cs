@@ -15,7 +15,7 @@ namespace CodeAgenda.DataAccess.Abstract.Users
         /// Add an User in the DB.
         /// </summary>
         /// <param name="user">User to add.</param>
-        void AddUser(User user);
+        void Add(User user);
 
         /// <summary>
         /// Gets a User from DB.
@@ -23,6 +23,13 @@ namespace CodeAgenda.DataAccess.Abstract.Users
         /// <param name="id">User Id</param>
         /// <returns> User to exist in DB, otherwise <see langword="null"/></returns>
         User? Get(Guid id);
+
+        /// <summary>
+        /// Gets all Users from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<User> GetAll();
 
         /// <summary>
         /// Update a User in the DB.

@@ -20,38 +20,31 @@ namespace CodeAgenda.DataAccess.Repositories
         {
         }
 
-        public void AddTag(Tag Tag)
+        public void Add(Tag Tag)
         {
             _context.Tag.Add(Tag);
         }
 
-        /// <summary>
-        /// Gets a Tag from DB.
-        /// </summary>
-        /// <param name="id">Tag Id</param>
-        /// <returns> Tag to exist in DB, otherwise <see langword="null"/></returns>
         Tag? ITagRepository.Get(Guid id)
         {
             return _context.Set<Tag>().Find(id);
         }
 
-        /// <summary>
-        /// Update a Tag in the DB.
-        /// </summary>
-        /// <param name="Tag">Tag to update.</param>
+        public IEnumerable<Tag> GetAll()
+        {
+            return _context.Tag.ToList();
+        }
+
         public void Update(Tag Tag)
         {
             _context.Tag.Update(Tag);
         }
 
-        /// <summary>
-        /// Delete a Tag in the DB.
-        /// </summary>
-        /// <param name="Tag">Tag to delete.</param>
         public void Delete(Tag Tag)
         {
             _context.Tag.Remove(Tag);
         }
 
+        
     }
 }

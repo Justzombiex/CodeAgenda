@@ -3,6 +3,7 @@ using CodeAgenda.DataAccess.Abstract.Users;
 using CodeAgenda.DataAccess.Abstract.Users;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories.Common;
+using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.Domain.Entities.Users;
@@ -21,34 +22,26 @@ namespace CodeAgenda.DataAccess.Repositories
         {
         }
 
-        public void AddUser(User User)
+        public void Add(User User)
         {
             _context.User.Add(User);
         }
 
-        /// <summary>
-        /// Gets a User from DB.
-        /// </summary>
-        /// <param name="id">User Id</param>
-        /// <returns> User to exist in DB, otherwise <see langword="null"/></returns>
         User? IUserRepository.Get(Guid id)
         {
             return _context.Set<User>().Find(id);
         }
 
-        /// <summary>
-        /// Update a User in the DB.
-        /// </summary>
-        /// <param name="User">User to update.</param>
+        public IEnumerable<User> GetAll()
+        {
+            return _context.User.ToList();
+        }
+
         public void Update(User User)
         {
             _context.User.Update(User);
         }
 
-        /// <summary>
-        /// Delete a User in the DB.
-        /// </summary>
-        /// <param name="User">User to delete.</param>
         public void Delete(User User)
         {
             _context.User.Remove(User);

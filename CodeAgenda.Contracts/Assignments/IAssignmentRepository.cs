@@ -14,14 +14,21 @@ namespace CodeAgenda.DataAccess.Repositories.Assignments
         /// Add an assignment in the DB.
         /// </summary>
         /// <param name="assignment">Assignment to add.</param>
-        void AddAssignment(Assignment assignment);
+        void Add(Assignment assignment);
 
         /// <summary>
         /// Gets an Assignment from DB.
         /// </summary>
         /// <param name="id">Assignment Id</param>
         /// <returns> Assignment to exist in DB, otherwise <see langword="null"/></returns>
-        Assignment? Get(Guid id);
+        Assignment? GetById(Guid id);
+
+        /// <summary>
+        /// Gets all Assignments from DB.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Assignment> GetAll();
 
         /// <summary>
         /// Update an Assignment in the DB.
