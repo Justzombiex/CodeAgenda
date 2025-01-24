@@ -25,7 +25,7 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.Project.Add(Project);
         }
 
-        Project? IProjectRepository.Get(Guid id)
+        Project? IProjectRepository.GetById(Guid id)
         {
             return _context.Set<Project>().Find(id);
         }

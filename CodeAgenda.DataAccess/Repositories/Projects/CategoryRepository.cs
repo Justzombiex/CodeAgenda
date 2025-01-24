@@ -27,7 +27,7 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.Category.Add(Category);
         }
 
-        Category? ICategoryRepository.Get(Guid id)
+        Category? ICategoryRepository.GetById(Guid id)
         {
             return _context.Set<Category>().Find(id);
         }

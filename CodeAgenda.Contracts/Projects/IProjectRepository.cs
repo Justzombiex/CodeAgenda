@@ -21,7 +21,7 @@ namespace CodeAgenda.DataAccess.Abstract.Projects
         /// </summary>
         /// <param name="id">Project Id</param>
         /// <returns> Project to exist in DB, otherwise <see langword="null"/></returns>
-        Project? Get(Guid id);
+        Project? GetById(Guid id);
 
         /// <summary>
         /// Gets all Projects from DB.

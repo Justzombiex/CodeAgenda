@@ -23,7 +23,7 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.Notification.Add(notification);
         }
 
-        Notification? INotificationRepository.Get(Guid id)
+        Notification? INotificationRepository.GetById(Guid id)
         {
             return _context.Set<Notification>().Find(id);
         }

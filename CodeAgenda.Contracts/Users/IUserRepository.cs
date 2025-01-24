@@ -22,7 +22,7 @@ namespace CodeAgenda.DataAccess.Abstract.Users
         /// </summary>
         /// <param name="id">User Id</param>
         /// <returns> User to exist in DB, otherwise <see langword="null"/></returns>
-        User? Get(Guid id);
+        User? GetById(Guid id);
 
         /// <summary>
         /// Gets all Users from DB.

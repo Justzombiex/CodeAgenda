@@ -23,7 +23,7 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.Note.Add(Note);
         }
 
-        Note? INoteRepository.Get(Guid id)
+        Note? INoteRepository.GetById(Guid id)
         {
             return _context.Set<Note>().Find(id);
         }

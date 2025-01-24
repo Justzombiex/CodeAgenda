@@ -22,7 +22,7 @@ namespace CodeAgenda.DataAccess.Abstract.Projects
         /// </summary>
         /// <param name="id">Category Id</param>
         /// <returns> Category to exist in DB, otherwise <see langword="null"/></returns>
-        Category? Get(Guid id);
+        Category? GetById(Guid id);
 
         /// <summary>
         /// Gets all Categories from DB.

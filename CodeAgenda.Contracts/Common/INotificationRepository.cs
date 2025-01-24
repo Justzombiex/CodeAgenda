@@ -21,7 +21,7 @@ namespace CodeAgenda.DataAccess.Abstract.Common
         /// </summary>
         /// <param name="id">Notification Id</param>
         /// <returns> Notification to exist in DB, otherwise <see langword="null"/></returns>
-        Notification? Get(Guid id);
+        Notification? GetById(Guid id);
 
         /// <summary>
         /// Gets all Notifications from DB.

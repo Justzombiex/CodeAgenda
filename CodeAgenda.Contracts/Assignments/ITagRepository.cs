@@ -21,7 +21,7 @@ namespace CodeAgenda.DataAccess.Abstract.Assignments
         /// </summary>
         /// <param name="id">Tag Id</param>
         /// <returns> Tag to exist in DB, otherwise <see langword="null"/></returns>
-        Tag? Get(Guid id);
+        Tag? GetById(Guid id);
 
         /// <summary>
         /// Gets all Tags from DB.

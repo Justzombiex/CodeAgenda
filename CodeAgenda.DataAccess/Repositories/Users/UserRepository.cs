@@ -27,7 +27,7 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.User.Add(User);
         }
 
-        User? IUserRepository.Get(Guid id)
+        User? IUserRepository.GetById(Guid id)
         {
             return _context.Set<User>().Find(id);
         }

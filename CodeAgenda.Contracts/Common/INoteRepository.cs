@@ -21,7 +21,7 @@ namespace CodeAgenda.DataAccess.Abstract.Common
         /// </summary>
         /// <param name="id">Note Id</param>
         /// <returns> Note to exist in DB, otherwise <see langword="null"/></returns>
-        Note? Get(Guid id);
+        Note? GetById(Guid id);
 
         /// <summary>
         /// Gets all Notes from DB.

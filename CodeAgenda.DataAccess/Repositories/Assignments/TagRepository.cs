@@ -25,7 +25,7 @@ namespace CodeAgenda.DataAccess.Repositories
             _context.Tag.Add(Tag);
         }
 
-        Tag? ITagRepository.Get(Guid id)
+        Tag? ITagRepository.GetById(Guid id)
         {
             return _context.Set<Tag>().Find(id);
         }
