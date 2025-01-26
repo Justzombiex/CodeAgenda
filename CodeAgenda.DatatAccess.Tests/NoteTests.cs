@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodeAgenda.DataAccess.Repositories.Assignments;
+using CodeAgenda.Domain.Entities.Assignments;
 
 namespace CodeAgenda.DatatAccess.Tests
 {
@@ -19,6 +21,7 @@ namespace CodeAgenda.DatatAccess.Tests
     {
         private INoteRepository _noteRepository;
         private IProjectRepository _projectRepository;
+        private IAssignmentRepository _assignmentRepository;
         private IUnitOfWork _unitOfWork;
 
         public NoteTests()
@@ -27,6 +30,7 @@ namespace CodeAgenda.DatatAccess.Tests
                 new ApplicationContext(ConnectionStringProvider.GetConnectionString());
             _noteRepository = new NoteRepository(context);
             _projectRepository = new ProjectRepository(context);
+            _assignmentRepository = new AssignmentRepository(context);
             _unitOfWork = new UnitOfWork(context);
         }
 
@@ -36,10 +40,15 @@ namespace CodeAgenda.DatatAccess.Tests
             string content
             )
         {
+            //TODO: Verificar la relación de las notas con proyectos y assignments
             //Arrange
             Guid id = Guid.NewGuid();
             Project project = _projectRepository.GetAll().First();
             Note note = new Note(content, project, id);
+            Assignment assignment = _assignmentRepository.GetAll().First();
+             note.Assignment = assignment;
+            note.AssigmetnId = assignment.Id;
+
 
 
             //Execute

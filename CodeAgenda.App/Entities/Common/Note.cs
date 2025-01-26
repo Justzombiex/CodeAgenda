@@ -61,12 +61,15 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <param name="id">The unique identifier for the note.</param>
         public Note(
             string content,
+            Project project,
             Guid id)
             : base(id)
         {
             Content = content;
             CreatedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;
+            Project = project;
+            ProjectId = project.Id;
         }
     }
 }
