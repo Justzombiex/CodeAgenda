@@ -48,11 +48,14 @@ namespace CodeAgenda.Domain.Entities.Projects
         public Category(
             string name,
             Color color,
+            Project project,
             Guid id)
             : base(id)
         {
             Name = name;
             Color = color;
+            Project = project;
+            ProjectId = id;
         }
     }
 }

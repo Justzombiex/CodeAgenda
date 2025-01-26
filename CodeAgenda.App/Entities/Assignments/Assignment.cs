@@ -81,6 +81,7 @@ namespace CodeAgenda.Domain.Entities.Assignments
             string description,
             DateTime finishDate,
             Status status,
+            Project project,
             Guid id)
             : base(id)
         {
@@ -88,6 +89,8 @@ namespace CodeAgenda.Domain.Entities.Assignments
             Description = description;
             FinishDate = finishDate;
             Status = status;
+            Project = project;
+            ProjectId = project.Id;
             Tags = new List<Tag>();
             Notes = new List<Note>();
         }
