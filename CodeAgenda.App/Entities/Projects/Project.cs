@@ -99,6 +99,7 @@ namespace CodeAgenda.Domain.Entities.Projects
             string description,
             DateTime startDate,
             DateTime endDate,
+            User user,
             Guid id) :
             base(id)
         {
@@ -111,6 +112,8 @@ namespace CodeAgenda.Domain.Entities.Projects
             Tags = new List<Tag>();
             Notes = new List<Note>();
             Notifications = new List<Notification>();
+            User = user;
+            UserID = user.Id;
 
         }
     }

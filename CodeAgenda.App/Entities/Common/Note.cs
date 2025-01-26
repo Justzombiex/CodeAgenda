@@ -65,8 +65,8 @@ namespace CodeAgenda.Domain.Entities.Common
             : base(id)
         {
             Content = content;
-            CreatedDate = DateTime.Now;
-            LastModifiedDate = DateTime.Now;
+            CreatedDate = DateTime.UtcNow;
+            LastModifiedDate = DateTime.UtcNow;
         }
     }
 }

@@ -30,8 +30,8 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Projects
             builder.HasMany(a => a.Tags)
                 .WithMany(t => t.Projects)
                 .UsingEntity<TagProjects>(
-                   j => j.HasOne<Tag>().WithMany().HasForeignKey("TagId"),
-                   j => j.HasOne<Project>().WithMany().HasForeignKey("ProjectId"));
+                   j => j.HasOne<Tag>().WithMany().HasForeignKey("Id"),
+                   j => j.HasOne<Project>().WithMany().HasForeignKey("Id"));
 
             base.Configure(builder);
         }

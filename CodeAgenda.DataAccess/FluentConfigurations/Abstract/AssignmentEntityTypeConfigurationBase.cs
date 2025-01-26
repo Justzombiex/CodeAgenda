@@ -23,8 +23,8 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
             builder.HasMany(a => a.Tags)
                 .WithMany(t => t.Assignments)
                 .UsingEntity<TagAssignments>(
-                   j => j.HasOne<Tag>().WithMany().HasForeignKey("TagId"),
-                   j => j.HasOne<Assignment>().WithMany().HasForeignKey("AssignmentId"));
+                   j => j.HasOne<Tag>().WithMany().HasForeignKey("Id"),
+                   j => j.HasOne<Assignment>().WithMany().HasForeignKey("Id"));
 
             base.Configure(builder);
         }

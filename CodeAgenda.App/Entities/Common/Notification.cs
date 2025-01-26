@@ -56,12 +56,15 @@ namespace CodeAgenda.Domain.Entities.Common
             string message,
             DateTime reminderDate,
             bool isRead,
+            Project project,
             Guid id)
             : base(id)
         {
             Message = message;
             ReminderDate = reminderDate;
             IsRead = isRead;
+            Project = project;
+            ProjectId = project.Id;
         }
     }
 }
