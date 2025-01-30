@@ -33,7 +33,13 @@ namespace CodeAgenda.Domain.Entities.Users
         /// Projects related to the User.
         /// </summary>
         [NotMapped]
-        public List<Project> Projects { get; } = new List<Project>();
+        public List<Project> Projects;
+
+        /// <summary>
+        /// Notes cretaed by the user
+        /// </summary>
+        [NotMapped]
+        public List<Note> Notes;
 
         #endregion Properties
 
@@ -57,6 +63,8 @@ namespace CodeAgenda.Domain.Entities.Users
             Name = name;
             FirstName = firstName;
             Email = email;
+            Projects = new List<Project>();
+            Notes = new List<Note>();
         }
     }
 }

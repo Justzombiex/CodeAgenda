@@ -1,4 +1,5 @@
 ﻿using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <summary>
         /// The unique identifier of the assignment associated with this note.
         /// </summary>
-        public Guid AssigmetnId { get; set; }
+        public Guid AssigmetnId { get; protected set; }
 
         // <summary>
         /// Required by EntityFrameworkCore for migration.
@@ -26,9 +27,10 @@ namespace CodeAgenda.Domain.Entities.Common
 
         public NoteAssignment(
             string content,
+            User user,
             Assignment assignment,
             Guid id
-            ) : base(content, id)
+            ) : base(content, user, id)
         {
             Assignment = assignment;
             AssigmetnId = assignment.Id;

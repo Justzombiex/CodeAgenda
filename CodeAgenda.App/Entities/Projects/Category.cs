@@ -30,7 +30,7 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// <summary>
         /// The unique identifier for the project
         /// </summary>
-        public Guid ProjectId { get; set; }
+        public Guid ProjectId { get; protected set; }
 
         #endregion Properties
 

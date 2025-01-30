@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.DataAccess.Repositories.Assignments;
 using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.DataAccess.Abstract.Users;
+using CodeAgenda.Domain.Entities.Users;
 
 namespace CodeAgenda.DatatAccess.Tests
 {
@@ -22,6 +24,7 @@ namespace CodeAgenda.DatatAccess.Tests
         private INoteRepository _noteRepository;
         private IProjectRepository _projectRepository;
         private IAssignmentRepository _assignmentRepository;
+        private IUserRepository _userRepository;
         private IUnitOfWork _unitOfWork;
 
         public NoteTests()
@@ -44,7 +47,8 @@ namespace CodeAgenda.DatatAccess.Tests
             //Arrange
             Guid id = Guid.NewGuid();
             Project project = _projectRepository.GetAll().First();
-            Note note = new NoteProject(content, project, id);
+            User user = _userRepository.GetAll().First();
+            Note note = new NoteProject(content, user, project, id);
 
             //Execute
             _noteRepository.Add(note);
@@ -66,7 +70,8 @@ namespace CodeAgenda.DatatAccess.Tests
             //Arrange
             Guid id = Guid.NewGuid();
             Assignment assignment = _assignmentRepository.GetAll().First();
-            Note note = new NoteAssignment(content, assignment, id);
+            User user = _userRepository.GetAll().First();
+            Note note = new NoteAssignment(content, user, assignment, id);
 
             //Execute
             _noteRepository.Add(note);

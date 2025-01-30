@@ -25,6 +25,8 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Users
             builder.ToTable("Users");
             builder.HasMany(u => u.Projects)
                 .WithOne(p => p.User);
+            builder.HasMany(u => u.Notes)
+                .WithOne(n => n.User);
             base.Configure(builder);
         }
     }

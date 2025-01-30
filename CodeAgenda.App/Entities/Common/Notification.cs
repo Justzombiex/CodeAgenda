@@ -36,7 +36,7 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <summary>
         /// The unique identifier of the project associated with this notification.
         /// </summary>
-        public Guid ProjectId { get; set; }
+        public Guid ProjectId { get; protected set; }
 
         #endregion Properties
 

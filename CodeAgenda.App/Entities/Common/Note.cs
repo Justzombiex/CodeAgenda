@@ -1,5 +1,6 @@
 ﻿using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Projects;
+using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,16 @@ namespace CodeAgenda.Domain.Entities.Common
         /// </summary>
         public DateTime LastModifiedDate { get; set; }
 
+        /// <summary>
+        /// User who created the note
+        /// </summary>
+        public User User { get; set; }
+
+        /// <summary>
+        /// User's id who created the note
+        /// </summary>
+        public Guid UserId { get; protected set; }
+
         #endregion Properties
 
         // <summary>
@@ -41,12 +52,15 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <param name="id">The unique identifier for the note.</param>
         public Note(
             string content,
+            User user,
             Guid id)
             : base(id)
         {
             Content = content;
             CreatedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;
+            User = user;
+            UserId = user.Id;
             
         }
     }

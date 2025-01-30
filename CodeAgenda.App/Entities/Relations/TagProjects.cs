@@ -11,10 +11,10 @@ namespace CodeAgenda.Domain.Entities.Relations
 {
     public class TagProjects
     {
-        public Guid ProjectId { get; set; }
+        public Guid ProjectId { get; protected set; }
         public Project Project { get; set; }
 
-        public Guid TagId { get; set; }
+        public Guid TagId { get; protected set; }
         public Tag Tag { get; set; }
 
         /// <summary>

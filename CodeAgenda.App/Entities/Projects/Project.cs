@@ -54,7 +54,7 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// <summary>
         /// The unique identifier for the user
         /// </summary>
-        public Guid UserID { get; set; }
+        public Guid UserID { get; protected set; }
 
         /// <summary>
         /// List of Assignments related to the project
