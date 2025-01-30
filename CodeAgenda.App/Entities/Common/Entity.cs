@@ -35,7 +35,7 @@ namespace CodeAgenda.Domain.Entities.Common
         /// 
         /// </summary>
         /// <param name="id">Entity identifier.</param>
-        protected Entity(Guid id)
+        public Entity(Guid id)
         {
             Id = id;
         }

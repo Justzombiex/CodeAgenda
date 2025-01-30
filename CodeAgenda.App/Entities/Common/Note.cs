@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.Domain.Entities.Common
 {
-    public class Note : Entity
+    public abstract class Note : Entity
     {
         #region Properties
 
@@ -27,26 +27,6 @@ namespace CodeAgenda.Domain.Entities.Common
         /// </summary>
         public DateTime LastModifiedDate { get; set; }
 
-        /// <summary>
-        /// The project to which this note is associated.
-        /// </summary>
-        public Project Project { get; set; }
-
-        /// <summary>
-        /// The assignment to which this note is associated.
-        /// </summary>
-        public Assignment Assignment { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the assignment associated with this note.
-        /// </summary>
-        public Guid AssigmetnId { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the project associated with this note.
-        /// </summary>
-        public Guid ProjectId { get; set; }
-
         #endregion Properties
 
         // <summary>
@@ -61,15 +41,13 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <param name="id">The unique identifier for the note.</param>
         public Note(
             string content,
-            Project project,
             Guid id)
             : base(id)
         {
             Content = content;
             CreatedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;
-            Project = project;
-            ProjectId = project.Id;
+            
         }
     }
 }

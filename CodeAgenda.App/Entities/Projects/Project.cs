@@ -72,7 +72,7 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// Notes related to the project
         /// </summary>
         [NotMapped]
-        public List<Note> Notes;
+        public List<NoteProject> Notes;
 
         /// <summary>
         /// Notifications
@@ -110,7 +110,7 @@ namespace CodeAgenda.Domain.Entities.Projects
             Progress = 0;
             Assignments = new List<Assignment>();
             Tags = new List<Tag>();
-            Notes = new List<Note>();
+            Notes = new List<NoteProject>();
             Notifications = new List<Notification>();
             User = user;
             UserID = user.Id;

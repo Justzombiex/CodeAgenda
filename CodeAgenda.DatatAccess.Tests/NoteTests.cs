@@ -35,8 +35,8 @@ namespace CodeAgenda.DatatAccess.Tests
         }
 
         [Theory]
-        [InlineData("Add new element")]
-        public void Can_Add_New_Note(
+        [InlineData("Add new assignment")]
+        public void Can_Add_New_NoteProject(
             string content
             )
         {
@@ -44,12 +44,29 @@ namespace CodeAgenda.DatatAccess.Tests
             //Arrange
             Guid id = Guid.NewGuid();
             Project project = _projectRepository.GetAll().First();
-            Note note = new Note(content, project, id);
+            Note note = new NoteProject(content, project, id);
+
+            //Execute
+            _noteRepository.Add(note);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            Note? loadedNote = _noteRepository.GetById(id);
+            Assert.NotNull(loadedNote);
+
+        }
+
+        [Theory]
+        [InlineData("Add new element")]
+        public void Can_Add_New_NoteAssignment(
+            string content
+            )
+        {
+            //TODO: Verificar la relación de las notas con proyectos y assignments
+            //Arrange
+            Guid id = Guid.NewGuid();
             Assignment assignment = _assignmentRepository.GetAll().First();
-             note.Assignment = assignment;
-            note.AssigmetnId = assignment.Id;
-
-
+            Note note = new NoteAssignment(content, assignment, id);
 
             //Execute
             _noteRepository.Add(note);

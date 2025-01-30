@@ -60,7 +60,7 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// Notes related to the Assignment.
         /// </summary>
         [NotMapped]
-        public List<Note> Notes;
+        public List<NoteAssignment> Notes;
 
         #endregion
 
@@ -92,7 +92,7 @@ namespace CodeAgenda.Domain.Entities.Assignments
             Project = project;
             ProjectId = project.Id;
             Tags = new List<Tag>();
-            Notes = new List<Note>();
+            Notes = new List<NoteAssignment>();
         }
     }
 }
