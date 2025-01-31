@@ -63,8 +63,8 @@ namespace CodeAgenda.Domain.Entities.Users
             Name = name;
             FirstName = firstName;
             Email = email;
-            Projects = new List<Project>();
-            Notes = new List<Note>();
+            Projects = new();
+            Notes = new();
         }
     }
 }

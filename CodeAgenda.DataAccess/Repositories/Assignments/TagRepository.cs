@@ -1,6 +1,7 @@
 ﻿using CodeAgenda.DataAccess.Abstract.Assignments;
 using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess.Repositories.Assignments;
 using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;

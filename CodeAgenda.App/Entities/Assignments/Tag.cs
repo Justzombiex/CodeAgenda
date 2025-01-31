@@ -10,7 +10,7 @@ using CodeAgenda.Domain.Entities.Projects;
 
 namespace CodeAgenda.Domain.Entities.Assignments
 {
-    public class Tag : Entity
+    public abstract class Tag : Entity
     {
         #region Properties
 
@@ -22,18 +22,6 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// The color associated with the tag. 
         /// </summary> 
         public Color Color { get; set; }
-
-        /// <summary>
-        /// The assignments associated with this tag.
-        /// </summary>
-        [NotMapped]
-        public List<Assignment> Assignments { get; private set; }
-
-        /// <summary>
-        /// The projects associated with this tag.
-        /// </summary>
-        [NotMapped]
-        public List<Project> Projects { get; private set; }
 
         #endregion Properties
 
@@ -55,8 +43,6 @@ namespace CodeAgenda.Domain.Entities.Assignments
         {
             Name = name;
             Color = color;
-            Assignments = new List<Assignment>();
-            Projects = new List<Project>();
         }
     }
 }

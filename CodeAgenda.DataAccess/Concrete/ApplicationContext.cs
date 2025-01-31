@@ -65,12 +65,12 @@ namespace CodeAgenda.DataAccess.Concrete
         /// <summary>
         /// TagAndProjectRelation table
         /// </summary>
-        public DbSet<TagProjects> TagAndProjectRelation { get; set; }
+        public DbSet<TagProjectsRelation> TagAndProjectRelation { get; set; }
 
         /// <summary>
         /// TagAndProjectAssignment table
         /// </summary>
-        public DbSet<TagProjects> TagAndAssignmentRelation { get; set; }
+        public DbSet<TagProjectsRelation> TagAndAssignmentRelation { get; set; }
 
         #endregion
 
@@ -121,8 +121,8 @@ namespace CodeAgenda.DataAccess.Concrete
             modelBuilder.ApplyConfiguration(new ProjectEntityTypeConfigurationBase());
             modelBuilder.ApplyConfiguration(new UserEntityTypeConfigurationBase());
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfigurationBase());
-            modelBuilder.ApplyConfiguration(new TagProjectsEntityTypeConfigurationBase());
-            modelBuilder.ApplyConfiguration(new TagAssignmentsEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new TagProjectsRelationEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new TagAssignmentsRelationEntityTypeConfigurationBase());
 
         }
 

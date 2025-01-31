@@ -1,5 +1,6 @@
 ﻿using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
+using CodeAgenda.Domain.Entities.Relations;
 using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
@@ -59,26 +60,22 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// <summary>
         /// List of Assignments related to the project
         /// </summary>
-        [NotMapped]
         public List<Assignment> Assignments;
-
-        /// <summary>
-        /// Tags related to the project
-        /// </summary>
-        [NotMapped]
-        public List<Tag> Tags;
 
         /// <summary>
         /// Notes related to the project
         /// </summary>
-        [NotMapped]
         public List<NoteProject> Notes;
 
         /// <summary>
         /// Notifications
         /// </summary>
-        [NotMapped]
         public List<Notification> Notifications;
+
+        /// <summary>
+        /// Tag and Projects relation
+        /// </summary>
+        public List<TagProjectsRelation> TagProjectsRelations;
 
         #endregion Properties
 
@@ -108,12 +105,12 @@ namespace CodeAgenda.Domain.Entities.Projects
             StartDate = startDate;
             EndDate = endDate;
             Progress = 0;
-            Assignments = new List<Assignment>();
-            Tags = new List<Tag>();
-            Notes = new List<NoteProject>();
-            Notifications = new List<Notification>();
             User = user;
             UserID = user.Id;
+            Assignments = new();
+            Notes = new();
+            Notifications = new();
+            TagProjectsRelations = new();
 
         }
     }

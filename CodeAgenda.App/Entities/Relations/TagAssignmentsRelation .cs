@@ -1,6 +1,5 @@
 ﻿using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
-using CodeAgenda.Domain.Entities.Projects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace CodeAgenda.Domain.Entities.Relations
 {
-    public class TagProjects
+    public class TagAssignmentsRelation : Entity
     {
-        public Guid ProjectId { get; protected set; }
-        public Project Project { get; set; }
-
         public Guid TagId { get; protected set; }
-        public Tag Tag { get; set; }
+        public TagAssignment TagAssignment { get; set; }
+
+        public Guid AssignmentId { get; protected set; }
+        public Assignment Assignment { get; set; }
 
         /// <summary>
         /// Required by EntityFrameworkCore for migration.
         /// </summary>
-        protected TagProjects() { }
+        protected TagAssignmentsRelation() { }
     }
 }

@@ -20,11 +20,11 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
             builder.ToTable("Assignments");
             builder.HasMany(a => a.Notes)
                 .WithOne(n => n.Assignment);
-            builder.HasMany(a => a.Tags)
-                .WithMany(t => t.Assignments)
-                .UsingEntity<TagAssignments>(
-                   j => j.HasOne<Tag>().WithMany().HasForeignKey("Id"),
-                   j => j.HasOne<Assignment>().WithMany().HasForeignKey("Id"));
+
+            builder.HasMany(a => a.TagAssignmentsRelations)
+                .WithOne(t => t.Assignment)
+                .HasForeignKey(ta => ta.AssignmentId);
+                
 
             base.Configure(builder);
         }
