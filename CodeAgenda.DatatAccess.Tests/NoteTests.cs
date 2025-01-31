@@ -34,6 +34,7 @@ namespace CodeAgenda.DatatAccess.Tests
             _noteRepository = new NoteRepository(context);
             _projectRepository = new ProjectRepository(context);
             _assignmentRepository = new AssignmentRepository(context);
+            _userRepository = new UserRepository(context);
             _unitOfWork = new UnitOfWork(context);
         }
 
