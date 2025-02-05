@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
-using CodeAgenda.Domain.Entities.Relations;
 using CodeAgenda.Domain.Entities.Types;
 
 namespace CodeAgenda.Domain.Entities.Assignments
@@ -48,7 +47,7 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// <summary>
         /// The unique identifier for the project
         /// </summary>
-        public Guid ProjectId { get; protected set; }
+        public Guid ProjectId { get; set; }
 
         /// <summary>
         /// Notes related to the Assignment.
@@ -58,7 +57,7 @@ namespace CodeAgenda.Domain.Entities.Assignments
         /// <summary>
         /// Tag and Assignments relation
         /// </summary>
-        public List<TagAssignmentsRelation> TagAssignmentsRelations;
+        public List<TagAssignment> Tags;
 
         #endregion
 
@@ -89,7 +88,7 @@ namespace CodeAgenda.Domain.Entities.Assignments
             Status = status;
             Project = project;
             ProjectId = project.Id;
-            TagAssignmentsRelations = new();
+            Tags = new();
             Notes = new();
         }
     }

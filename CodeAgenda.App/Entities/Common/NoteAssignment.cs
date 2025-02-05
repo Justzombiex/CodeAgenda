@@ -18,7 +18,7 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <summary>
         /// The unique identifier of the assignment associated with this note.
         /// </summary>
-        public Guid AssigmetnId { get; protected set; }
+        public Guid AssignmentId { get; set; }
 
         // <summary>
         /// Required by EntityFrameworkCore for migration.
@@ -33,7 +33,7 @@ namespace CodeAgenda.Domain.Entities.Common
             ) : base(content, user, id)
         {
             Assignment = assignment;
-            AssigmetnId = assignment.Id;
+            AssignmentId = assignment.Id;
         }
 
 

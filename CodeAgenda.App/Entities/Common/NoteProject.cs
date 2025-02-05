@@ -20,7 +20,7 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <summary>
         /// The unique identifier of the project associated with this note.
         /// </summary>
-        public Guid ProjectId { get; protected set; }
+        public Guid ProjectId { get; set; }
 
         // <summary>
         /// Required by EntityFrameworkCore for migration.

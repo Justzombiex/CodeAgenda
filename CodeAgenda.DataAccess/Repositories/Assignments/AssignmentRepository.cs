@@ -22,9 +22,9 @@ namespace CodeAgenda.DataAccess.Repositories
         {
         }
 
-        public void Add(Assignment Assignment)
+        public void Add(Assignment assignment)
         {
-            _context.Assignment.Add(Assignment);
+            _context.Assignment.Add(assignment);
         }
 
         public void Delete(Assignment Assignment)

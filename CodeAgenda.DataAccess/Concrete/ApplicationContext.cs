@@ -11,9 +11,7 @@ using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.Domain.Entities.Projects;
 using System.Drawing;
 using CodeAgenda.DataAccess.FluentConfigurations;
-using CodeAgenda.Domain.Entities.Relations;
 using CodeAgenda.DataAccess.FluentConfigurations.Abstract;
-using CodeAgenda.DataAccess.FluentConfigurations.Relations;
 using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.DataAccess.FluentConfigurations.Projects;
 using CodeAgenda.DataAccess.FluentConfigurations.Users;
@@ -61,16 +59,6 @@ namespace CodeAgenda.DataAccess.Concrete
         /// Project table.
         /// </summary>
         public DbSet<Project> Project { get; set; }
-
-        /// <summary>
-        /// TagAndProjectRelation table
-        /// </summary>
-        public DbSet<TagProjectsRelation> TagAndProjectRelation { get; set; }
-
-        /// <summary>
-        /// TagAndProjectAssignment table
-        /// </summary>
-        public DbSet<TagProjectsRelation> TagAndAssignmentRelation { get; set; }
 
         #endregion
 
@@ -121,8 +109,10 @@ namespace CodeAgenda.DataAccess.Concrete
             modelBuilder.ApplyConfiguration(new ProjectEntityTypeConfigurationBase());
             modelBuilder.ApplyConfiguration(new UserEntityTypeConfigurationBase());
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfigurationBase());
-            modelBuilder.ApplyConfiguration(new TagProjectsRelationEntityTypeConfigurationBase());
-            modelBuilder.ApplyConfiguration(new TagAssignmentsRelationEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new TagAssignmentsEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new TagProjectsEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new NoteAssignmentEntityTypeConfigurationBase());
+            modelBuilder.ApplyConfiguration(new NoteProjectEntityTypeConfigurationBase());
 
         }
 

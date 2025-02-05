@@ -20,9 +20,9 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
             builder.ToTable("Tags");
 
             builder.Property(t => t.Color)
-                .HasConversion(
-                c => c.ToArgb(),
-                s => Color.FromArgb(s));
+                   .HasConversion(
+                   c => c.ToArgb(),
+                   s => Color.FromArgb(s));
 
             base.Configure(builder);
         }

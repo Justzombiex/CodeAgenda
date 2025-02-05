@@ -1,5 +1,4 @@
-﻿using CodeAgenda.Domain.Entities.Relations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
@@ -22,9 +21,9 @@ namespace CodeAgenda.Domain.Entities.Assignments
         public Guid AssignmentId { get; set; }
 
         /// <summary>
-        /// Tags and Assignements relation
+        /// Required by EntityFrameworkCore for migration.
         /// </summary>
-        public List<TagAssignmentsRelation> TagAssignmentsRelations;
+        protected TagAssignment() { }
 
         public TagAssignment(string name,
             Color color,
@@ -34,8 +33,6 @@ namespace CodeAgenda.Domain.Entities.Assignments
         {
             Assignment = assignment;
             AssignmentId = Assignment.Id;
-
-            TagAssignmentsRelations = new();
         }
     }
 }

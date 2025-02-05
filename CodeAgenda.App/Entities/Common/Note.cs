@@ -36,7 +36,7 @@ namespace CodeAgenda.Domain.Entities.Common
         /// <summary>
         /// User's id who created the note
         /// </summary>
-        public Guid UserId { get; protected set; }
+        public Guid UserId { get; set; }
 
         #endregion Properties
 

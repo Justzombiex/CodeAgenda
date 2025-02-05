@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Projects;
 using CodeAgenda.DataAccess.FluentConfigurations.Common;
-using CodeAgenda.Domain.Entities.Relations;
 
 namespace CodeAgenda.DataAccess.FluentConfigurations.Projects
 {
@@ -26,12 +25,8 @@ namespace CodeAgenda.DataAccess.FluentConfigurations.Projects
                 .WithOne(p => p.Project);
             builder.HasOne(c => c.Category)
                 .WithOne(p => p.Project);
-
-            builder.HasMany(a => a.TagProjectsRelations)
-                 .WithOne(t => t.Project)
-                 .HasForeignKey(ta => ta.ProjectId);
-
-
+            builder.HasMany(p => p.Tags)
+                .WithOne(p => p.Project);
 
             base.Configure(builder);
         }

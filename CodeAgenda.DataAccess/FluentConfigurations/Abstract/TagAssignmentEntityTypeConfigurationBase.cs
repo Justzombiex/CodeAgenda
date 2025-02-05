@@ -1,33 +1,31 @@
 ﻿using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Relations;
+using CodeAgenda.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
 {
-    public class TagAssignmentsRelationEntityTypeConfiguration : EntityTypeConfigurationBase<TagAssignmentsRelation>
+    public class TagAssignmentsEntityTypeConfiguration
+    : IEntityTypeConfiguration<TagAssignment>
     {
-        public override void Configure(EntityTypeBuilder<TagAssignmentsRelation> builder)
+        public void Configure(EntityTypeBuilder<TagAssignment> builder)
         {
-            builder.ToTable("TagAssignmentsRelations");
+            builder.ToTable("TagAssignments");
+            builder.HasBaseType(typeof(Tag));
 
-            builder.HasKey(tar => new { tar.TagId, tar.AssignmentId });
+            builder.Property(t => t.Color)
+            .HasConversion(
+            c => c.ToArgb(),
+            s => Color.FromArgb(s));
 
-            builder.HasOne(tar => tar.TagAssignment)
-                   .WithMany(ta => ta.TagAssignmentsRelations)
-                   .HasForeignKey(tar => tar.TagId);
-
-            builder.HasOne(tar => tar.Assignment)
-                   .WithMany(a => a.TagAssignmentsRelations)
-                   .HasForeignKey(tar => tar.AssignmentId);
-
-            base.Configure(builder);
         }
     }
 }
+

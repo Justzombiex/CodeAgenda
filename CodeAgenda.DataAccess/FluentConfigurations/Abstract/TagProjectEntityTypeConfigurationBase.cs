@@ -1,22 +1,25 @@
 using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Relations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Drawing;
 
 namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
 {
-    public class TagProjectEntityTypeConfigurationBase
-        : EntityTypeConfigurationBase<TagProject>
+    public class TagProjectsEntityTypeConfiguration
+        : IEntityTypeConfiguration<TagProject>
     {
-        public override void Configure(EntityTypeBuilder<TagProject> builder)
+        public void Configure(EntityTypeBuilder<TagProject> builder)
         {
             builder.ToTable("TagProjects");
-            builder.HasMany(t => t.TagProjectRelations)
-                .WithOne(tp => tp.TagProject)
-                .HasForeignKey(tp => tp.TagId);
 
-            base.Configure(builder);
+            builder.Property(t => t.Color)
+                .HasConversion(
+                c => c.ToArgb(),
+                s => Color.FromArgb(s));
+
+            builder.HasBaseType(typeof(Tag));
+
         }
     }
 }

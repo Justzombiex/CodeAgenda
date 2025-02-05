@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace CodeAgenda.DataAccess.FluentConfigurations.Common
 {
     public class NoteAssignmentEntityTypeConfigurationBase
-        : EntityTypeConfigurationBase<NoteAssignment>
+        : IEntityTypeConfiguration<NoteAssignment>
     {
-        public override void Configure(EntityTypeBuilder<NoteAssignment> builder)
+        public void Configure(EntityTypeBuilder<NoteAssignment> builder)
         {
             builder.ToTable("NoteAssignments");
             builder.HasBaseType(typeof(Note));

@@ -1,6 +1,5 @@
 ﻿using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
-using CodeAgenda.Domain.Entities.Relations;
 using CodeAgenda.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
@@ -55,7 +54,7 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// <summary>
         /// The unique identifier for the user
         /// </summary>
-        public Guid UserID { get; protected set; }
+        public Guid UserID { get; set; }
 
         /// <summary>
         /// List of Assignments related to the project
@@ -75,7 +74,7 @@ namespace CodeAgenda.Domain.Entities.Projects
         /// <summary>
         /// Tag and Projects relation
         /// </summary>
-        public List<TagProjectsRelation> TagProjectsRelations;
+        public List<TagProject> Tags;
 
         #endregion Properties
 
@@ -110,7 +109,7 @@ namespace CodeAgenda.Domain.Entities.Projects
             Assignments = new();
             Notes = new();
             Notifications = new();
-            TagProjectsRelations = new();
+            Tags = new();
 
         }
     }
