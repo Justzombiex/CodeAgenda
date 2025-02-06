@@ -8,13 +8,7 @@ using CodeAgenda.DataAccess.Repositories.Assignments;
 using CodeAgenda.DatatAccess.Tests.Utilities;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Projects;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace CodeAgenda.DatatAccess.Tests
 {
@@ -31,6 +25,7 @@ namespace CodeAgenda.DatatAccess.Tests
             ApplicationContext context =
                 new ApplicationContext(ConnectionStringProvider.GetConnectionString());
             _tagRepository = new TagRepository(context);
+            _projectRepository = new ProjectRepository(context);
             _assignmentRepository = new AssignmentRepository(context);
             _unitOfWork = new UnitOfWork(context);
         }

@@ -1,18 +1,12 @@
 ﻿using CodeAgenda.Contracts;
+using CodeAgenda.DataAccess;
+using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Projects;
-using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories;
-using CodeAgenda.DataAccess;
 using CodeAgenda.DatatAccess.Tests.Utilities;
+using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
-using CodeAgenda.Domain.Entities.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeAgenda.DataAccess.Abstract.Common;
 
 namespace CodeAgenda.DatatAccess.Tests
 {
@@ -44,7 +38,7 @@ namespace CodeAgenda.DatatAccess.Tests
             DateTime reminderDate = DateTime.UtcNow.AddDays(7);
             Project project = _projectRepository.GetAll().First();
             Notification Notification = new Notification(message, reminderDate, isRead, project, id);
-            
+
 
             //Execute
             _notificationRepository.Add(Notification);

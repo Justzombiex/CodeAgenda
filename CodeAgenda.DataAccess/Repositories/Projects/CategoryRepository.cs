@@ -1,20 +1,11 @@
-﻿using CodeAgenda.DataAccess.Abstract.Common;
-using CodeAgenda.DataAccess.Abstract.Projects;
+﻿using CodeAgenda.DataAccess.Abstract.Projects;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories.Common;
-using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public class CategoryRepository 
+    public class CategoryRepository
         : RepositoryBase, ICategoryRepository
     {
 

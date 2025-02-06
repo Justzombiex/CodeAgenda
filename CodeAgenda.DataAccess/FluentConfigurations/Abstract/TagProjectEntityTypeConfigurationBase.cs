@@ -1,4 +1,3 @@
-using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.Domain.Entities.Assignments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

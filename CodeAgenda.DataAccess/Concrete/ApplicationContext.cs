@@ -1,20 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Common;
-using CodeAgenda.Domain.Entities.Users;
-using CodeAgenda.Domain.Entities.Projects;
-using System.Drawing;
-using CodeAgenda.DataAccess.FluentConfigurations;
-using CodeAgenda.DataAccess.FluentConfigurations.Abstract;
+﻿using CodeAgenda.DataAccess.FluentConfigurations.Abstract;
 using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.DataAccess.FluentConfigurations.Projects;
 using CodeAgenda.DataAccess.FluentConfigurations.Users;
+using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Common;
+using CodeAgenda.Domain.Entities.Projects;
+using CodeAgenda.Domain.Entities.Users;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace CodeAgenda.DataAccess.Concrete
 {

@@ -1,11 +1,4 @@
-﻿using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Users;
-using CodeAgenda.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CodeAgenda.Domain.Entities.Users;
 
 namespace CodeAgenda.DataAccess.Abstract.Users
 {

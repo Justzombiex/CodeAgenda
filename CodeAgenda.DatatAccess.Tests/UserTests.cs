@@ -1,16 +1,10 @@
 ﻿using CodeAgenda.Contracts;
+using CodeAgenda.DataAccess;
+using CodeAgenda.DataAccess.Abstract.Users;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories;
-using CodeAgenda.DataAccess;
 using CodeAgenda.DatatAccess.Tests.Utilities;
 using CodeAgenda.Domain.Entities.Users;
-using CodeAgenda.Domain.Entities.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeAgenda.DataAccess.Abstract.Users;
 
 namespace CodeAgenda.DatatAccess.Tests
 {

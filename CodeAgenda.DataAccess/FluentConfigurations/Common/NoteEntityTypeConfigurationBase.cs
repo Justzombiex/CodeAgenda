@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using CodeAgenda.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
-using CodeAgenda.Domain.Entities.Common;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CodeAgenda.DataAccess.FluentConfigurations.Common
 {

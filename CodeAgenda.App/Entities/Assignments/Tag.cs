@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using CodeAgenda.Domain.Entities.Common;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeAgenda.Domain.Entities.Common;
-using CodeAgenda.Domain.Entities.Projects;
 
 namespace CodeAgenda.Domain.Entities.Assignments
 {

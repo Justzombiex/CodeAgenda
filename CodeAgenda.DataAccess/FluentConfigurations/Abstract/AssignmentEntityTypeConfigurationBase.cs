@@ -1,13 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.DataAccess.FluentConfigurations.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
 {

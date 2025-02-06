@@ -2,13 +2,6 @@
 using CodeAgenda.DataAccess.Repositories.Assignments;
 using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Common;
-using CodeAgenda.Domain.Entities.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {

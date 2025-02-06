@@ -1,11 +1,5 @@
-﻿using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Projects;
+﻿using CodeAgenda.Domain.Entities.Projects;
 using CodeAgenda.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeAgenda.Domain.Entities.Common
 {

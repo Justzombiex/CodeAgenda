@@ -1,11 +1,4 @@
-﻿using CodeAgenda.Domain.Entities.Assignments;
-using CodeAgenda.Domain.Entities.Projects;
-using CodeAgenda.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CodeAgenda.Domain.Entities.Users;
 
 namespace CodeAgenda.Domain.Entities.Common
 {
@@ -61,7 +54,7 @@ namespace CodeAgenda.Domain.Entities.Common
             LastModifiedDate = DateTime.UtcNow;
             User = user;
             UserId = user.Id;
-            
+
         }
     }
 }

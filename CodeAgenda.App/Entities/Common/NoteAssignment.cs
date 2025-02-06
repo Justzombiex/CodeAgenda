@@ -1,10 +1,5 @@
 ﻿using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeAgenda.Domain.Entities.Common
 {
@@ -23,7 +18,7 @@ namespace CodeAgenda.Domain.Entities.Common
         // <summary>
         /// Required by EntityFrameworkCore for migration.
         /// </summary>
-        protected NoteAssignment() {}
+        protected NoteAssignment() { }
 
         public NoteAssignment(
             string content,

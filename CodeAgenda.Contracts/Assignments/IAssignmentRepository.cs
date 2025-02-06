@@ -1,10 +1,4 @@
-﻿using CodeAgenda.DataAccess.Abstract;
-using CodeAgenda.Domain.Entities.Assignments;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CodeAgenda.Domain.Entities.Assignments;
 
 namespace CodeAgenda.DataAccess.Repositories.Assignments
 {

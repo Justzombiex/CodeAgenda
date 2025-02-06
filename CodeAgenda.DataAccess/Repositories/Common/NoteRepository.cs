@@ -1,18 +1,12 @@
 ﻿using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories.Common;
-using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
-    public class NoteRepository 
-        :RepositoryBase, INoteRepository 
+    public class NoteRepository
+        : RepositoryBase, INoteRepository
     {
 
         public NoteRepository(ApplicationContext context) : base(context)
