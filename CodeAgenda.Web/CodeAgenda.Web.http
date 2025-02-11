@@ -1,0 +1,6 @@
+@CodeAgenda.Web_HostAddress = http://localhost:5182
+
+GET {{CodeAgenda.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
