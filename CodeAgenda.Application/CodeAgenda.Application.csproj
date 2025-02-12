@@ -7,9 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Users\" />
-    <Folder Include="Projects\" />
+    <Folder Include="Common\Commands\" />
+    <Folder Include="Common\Queries\" />
+    <Folder Include="Projects\Commands\" />
+    <Folder Include="Projects\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
