@@ -1,4 +1,4 @@
-﻿using CodeAgenda.DataAccess.FluentConfigurations.Abstract;
+﻿using CodeAgenda.DataAccess.FluentConfigurations.Assignments;
 using CodeAgenda.DataAccess.FluentConfigurations.Common;
 using CodeAgenda.DataAccess.FluentConfigurations.Projects;
 using CodeAgenda.DataAccess.FluentConfigurations.Users;

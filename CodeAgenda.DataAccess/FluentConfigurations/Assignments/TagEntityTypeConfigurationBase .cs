@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Drawing;
 
-namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
+namespace CodeAgenda.DataAccess.FluentConfigurations.Assignments
 {
     public class TagEntityTypeConfigurationBase
         : EntityTypeConfigurationBase<Tag>

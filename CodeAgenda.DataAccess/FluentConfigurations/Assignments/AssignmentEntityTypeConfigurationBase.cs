@@ -3,7 +3,7 @@ using CodeAgenda.Domain.Entities.Assignments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CodeAgenda.DataAccess.FluentConfigurations.Abstract
+namespace CodeAgenda.DataAccess.FluentConfigurations.Assignments
 {
     public class AssignmentEntityTypeConfigurationBase
         : EntityTypeConfigurationBase<Assignment>
