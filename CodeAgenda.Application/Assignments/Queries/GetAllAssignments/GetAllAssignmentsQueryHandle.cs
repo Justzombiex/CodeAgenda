@@ -10,9 +10,9 @@ namespace CodeAgenda.Application.Assignments.Queries.GetAllAssignments
         private readonly IAssignmentRepository _assignmentRepository;
 
         public GetAllAssignmentsQueryHandler(
-            IAssignmentRepository AssignmentRepository)
+            IAssignmentRepository assignmentRepository)
         {
-            _assignmentRepository = AssignmentRepository;
+            _assignmentRepository = assignmentRepository;
         }
 
         public Task<IEnumerable<Assignment>> Handle(GetAllAssignmentsQuery request, CancellationToken cancellationToken)
