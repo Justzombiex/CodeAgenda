@@ -1,11 +1,6 @@
 ﻿using CodeAgenda.Application.Abstract;
 using CodeAgenda.Contracts;
 using CodeAgenda.DataAccess.Abstract.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeAgenda.Application.Common.Commands.UpdateNote
 {

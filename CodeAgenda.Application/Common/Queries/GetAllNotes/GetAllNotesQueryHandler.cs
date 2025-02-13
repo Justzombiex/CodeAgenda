@@ -10,9 +10,9 @@ namespace CodeAgenda.Application.Common.Queries.GetAllNotes
         private readonly INoteRepository _noteRepository;
 
         public GetAllNotesQueryHandler(
-            INoteRepository noteAssignmentRepository)
+            INoteRepository noteRepository)
         {
-            _noteRepository = noteAssignmentRepository;
+            _noteRepository = noteRepository;
         }
 
         public Task<IEnumerable<Note>> Handle(GetAllNotesQuery request, CancellationToken cancellationToken)

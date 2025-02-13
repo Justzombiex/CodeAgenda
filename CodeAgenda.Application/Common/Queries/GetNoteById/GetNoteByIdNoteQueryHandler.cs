@@ -10,9 +10,9 @@ namespace CodeAgenda.Application.Common.Queries.GetNoteById
         private readonly INoteRepository _noteRepository;
 
         public GetNoteByIdQueryHandler(
-            INoteRepository projectRepository)
+            INoteRepository noteRepository)
         {
-            _noteRepository = projectRepository;
+            _noteRepository = noteRepository;
         }
 
         public Task<Note?> Handle(GetNoteByIdQuery request, CancellationToken cancellationToken)
