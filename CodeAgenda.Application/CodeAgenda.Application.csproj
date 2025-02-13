@@ -9,8 +9,6 @@
   <ItemGroup>
     <Folder Include="Common\Commands\" />
     <Folder Include="Common\Queries\" />
-    <Folder Include="Projects\Commands\" />
-    <Folder Include="Projects\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
