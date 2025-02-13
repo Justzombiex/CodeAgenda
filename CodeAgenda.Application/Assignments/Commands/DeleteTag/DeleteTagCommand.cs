@@ -2,5 +2,6 @@
 
 namespace CodeAgenda.Application.Assignments.Commands.DeleteTag
 {
-    public record DeleteTagProjectCommand(Guid Id) : ICommand;
+    public record DeleteTagCommand(Guid Id) : ICommand;
+
 }
