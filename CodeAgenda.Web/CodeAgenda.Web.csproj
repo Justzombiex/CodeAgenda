@@ -7,12 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="14.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.13" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\CodeAgend.IOC\CodeAgenda.IOC.csproj" />
+		<ProjectReference Include="..\CodeAgenda.DTO\CodeAgenda.DTO.csproj" />
 	</ItemGroup>
 
 </Project>

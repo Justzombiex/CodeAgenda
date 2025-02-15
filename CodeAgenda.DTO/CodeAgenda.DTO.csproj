@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CodeAgenda.App\CodeAgenda.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

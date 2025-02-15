@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.5.3" />
@@ -19,6 +20,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CodeAgenda.Contracts\CodeAgenda.Contracts.csproj" />
     <ProjectReference Include="..\CodeAgenda.DataAccess\CodeAgenda.DataAccess.csproj" />
+    <ProjectReference Include="..\CodeAgenda.DTO\CodeAgenda.DTO.csproj" />
+    <ProjectReference Include="..\CodeAgenda.Web\CodeAgenda.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
