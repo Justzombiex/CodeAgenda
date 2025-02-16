@@ -50,7 +50,6 @@ public class AutoMapperTests
         Assert.Equal(project.Description, projectDTO.Description);
         Assert.Equal(project.StartDate, projectDTO.StartDate);
         Assert.Equal(project.EndDate, projectDTO.EndDate);
-        Assert.Equal(project.Id, projectDTO.Id);
     }
 
     [Fact]

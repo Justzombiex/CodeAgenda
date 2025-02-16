@@ -8,7 +8,8 @@
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public Guid UserID { get; set; }
-        public Guid Id { get; set; }
+
+        
     }
 
 }

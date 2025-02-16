@@ -1,6 +1,5 @@
 using CodeAgenda.IOC.Dependencies;
 using CodeAgenda.Services.Interfaces;
-using CodeAgenda.Services;
 using CodeAgenda.Contracts;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess;
@@ -11,6 +10,7 @@ using CodeAgenda.Application;
 using CodeAgenda.DataAccess.Abstract.Projects;
 using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Assignments;
+using CodeAgenda.Services.Services;
 
 namespace CodeAgenda.Web
 {
@@ -36,6 +36,8 @@ namespace CodeAgenda.Web
             builder.Services.InjectDependencies(builder.Configuration);
 
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IProjectService, ProjectService>();
+
             builder.Services.AddScoped<ApplicationContext>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

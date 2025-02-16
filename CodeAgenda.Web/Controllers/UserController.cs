@@ -69,7 +69,7 @@ namespace CodeAgenda.Web.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPost]
         [Route("Create")]
         public async Task<IActionResult> Create([FromBody] UserDTO userDto)
         {
@@ -140,6 +140,7 @@ namespace CodeAgenda.Web.Controllers
                 rsp.status = true;
                 var command = new DeleteUserCommand(id);
                 _userService.Delete(command);
+                rsp.value= true;
             }
             catch (Exception ex)
             {

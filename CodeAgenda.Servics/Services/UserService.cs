@@ -9,7 +9,7 @@ using CodeAgenda.DTO.Users;
 using CodeAgenda.Services.Interfaces;
 using MediatR;
 
-namespace CodeAgenda.Services
+namespace CodeAgenda.Services.Services
 {
     public class UserService : IUserService
     {
@@ -43,7 +43,7 @@ namespace CodeAgenda.Services
             }
             catch (Exception ex)
             {
-            
+
                 throw new ApplicationException("Error al eliminar el usuario", ex);
             }
         }
@@ -87,6 +87,13 @@ namespace CodeAgenda.Services
                 throw new ApplicationException("Error al actualizar el usuario", ex);
             }
         }
-    }
 
+        public async Task<User?> GetUserById(Guid userId)
+        {
+            var query = new GetUserByIdQuery(userId);
+            var userDto = await _mediator.Send(query);
+            var user = _mapper.Map<User>(userDto);
+            return user;
+        }
+    }
 }
