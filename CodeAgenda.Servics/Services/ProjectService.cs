@@ -30,7 +30,7 @@ namespace CodeAgenda.Services.Services
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error al crear el usuario", ex);
+                throw new ApplicationException(ex.Message);
             }
         }
 
@@ -43,7 +43,7 @@ namespace CodeAgenda.Services.Services
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Error al eliminar el usuario", ex);
+                throw new ApplicationException(ex.Message);
             }
         }
 
@@ -57,7 +57,7 @@ namespace CodeAgenda.Services.Services
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error al obtener los usuarios", ex);
+                throw new ApplicationException(ex.Message);
             }
         }
 
@@ -71,7 +71,7 @@ namespace CodeAgenda.Services.Services
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error al obtener el usuario", ex);
+                throw new ApplicationException(ex.Message);
             }
         }
 
@@ -83,7 +83,7 @@ namespace CodeAgenda.Services.Services
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error al actualizar el usuario", ex);
+                throw new ApplicationException(ex.Message);
             }
         }
     }

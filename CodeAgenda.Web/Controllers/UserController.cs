@@ -98,8 +98,8 @@ namespace CodeAgenda.Web.Controllers
         }
 
         [HttpPut]
-        [Route("Edit")]
-        public async Task<IActionResult> Edit([FromBody] UserDTO userDto)
+        [Route("Edit/{id:guid}")]
+        public async Task<IActionResult> Edit([FromBody] UserDTO userDto, Guid id)
         {
             var rsp = new Response<bool>();
 
@@ -110,7 +110,7 @@ namespace CodeAgenda.Web.Controllers
                     userDto.Name,
                     userDto.FirstName,
                     userDto.Email,
-                    userDto.Id
+                    id
 
                 );
 
