@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
-using CodeAgenda.Application.Projects.Commands.CreateProject;
-using CodeAgenda.Application.Projects.Commands.DeleteProject;
-using CodeAgenda.Application.Projects.Commands.UpdateProject;
-using CodeAgenda.Application.Projects.Queries.GetAllProjects;
+using CodeAgenda.Application.Assignments.Commands.CreateAssignment;
+using CodeAgenda.Application.Assignments.Commands.DeleteAssignment;
+using CodeAgenda.Application.Assignments.Commands.UpdateAssignment;
+using CodeAgenda.Application.Assignments.Queries.GetAllAssignments;
+using CodeAgenda.Application.Assignments.Queries.GetAssignmnetById;
 using CodeAgenda.Application.Projects.Queries.GetProjectById;
-using CodeAgenda.Application.Users.Queries.GetUserById;
+using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.Domain.Entities.Projects;
-using CodeAgenda.Domain.Entities.Users;
+using CodeAgenda.DTO.Assignments;
 using CodeAgenda.DTO.Projects;
 using CodeAgenda.Services.Interfaces;
+using CodeAgenda.Services.Services;
 using CodeAgenda.Utility.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,16 +18,16 @@ namespace CodeAgenda.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProjectController : ControllerBase
+    public class AssignmentController : ControllerBase
     {
+        private readonly IAssignmentService _assignmentService;
         private readonly IProjectService _projectService;
-        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public ProjectController(IProjectService projectService, IUserService userService, IMapper mapper)
+        public AssignmentController(IAssignmentService assignmentService, IProjectService projectService, IMapper mapper)
         {
+            _assignmentService = assignmentService;
             _projectService = projectService;
-            _userService = userService;
             _mapper = mapper;
         }
 
@@ -33,15 +35,15 @@ namespace CodeAgenda.Web.Controllers
         [Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            var rsp = new Response<List<ProjectDTO>>();
+            var rsp = new Response<List<AssignmentDTO>>();
 
             try
             {
-                var query = new GetAllProjectsQuery();
-                var projectDtos = await _projectService.GetAll(query);
+                var query = new GetAllAssignmentsQuery();
+                var assignmentDtos = await _assignmentService.GetAll(query);
 
                 rsp.status = true;
-                rsp.value = projectDtos;
+                rsp.value = assignmentDtos;
             }
             catch (Exception ex)
             {
@@ -56,15 +58,15 @@ namespace CodeAgenda.Web.Controllers
         [Route("GetById/{id:guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var rsp = new Response<ProjectDTO?>();
+            var rsp = new Response<AssignmentDTO?>();
 
             try
             {
-                var query = new GetProjectByIdQuery(id);
-                var projectDto = await _projectService.GetById(query);
+                var query = new GetAssignmentByIdQuery(id);
+                var assignmentDto = await _assignmentService.GetById(query);
 
                 rsp.status = true;
-                rsp.value = projectDto;
+                rsp.value = assignmentDto;
             }
             catch (Exception ex)
             {
@@ -78,28 +80,32 @@ namespace CodeAgenda.Web.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create([FromBody] ProjectDTO projectDto)
+        public async Task<IActionResult> Create([FromBody] AssignmentDTO assignmentDto)
         {
-            var rsp = new Response<ProjectDTO>();
+            var rsp = new Response<AssignmentDTO>();
 
             try
             {
-                
-                var user = await _userService.GetUserById(projectDto.UserID);
+                var project = await _projectService.GetProjectById(assignmentDto.ProjectId);
 
-                if (user == null)
+                if (project == null)
                 {
                     rsp.status = false;
-                    rsp.message = "User not found";
+                    rsp.message = "Project not found";
                     return NotFound(rsp);
                 }
 
-                var project = _mapper.Map<Project>(projectDto);
-                var command = new CreateProjectCommand(project.Name, project.Description, project.StartDate, project.EndDate, user);
+                var assignment = _mapper.Map<Assignment>(assignmentDto);
+                var command = new CreateAssignmentCommand(
+                    assignment.Name,
+                    assignment.Description,
+                    assignment.FinishDate,
+                    assignment.Status,
+                    project);
 
-                var createdProjectDto = await _projectService.Create(command);
+                var createdAssignmentDto = await _assignmentService.Create(command);
                 rsp.status = true;
-                rsp.value = createdProjectDto;
+                rsp.value = createdAssignmentDto;
             }
             catch (Exception ex)
             {
@@ -113,26 +119,25 @@ namespace CodeAgenda.Web.Controllers
 
         [HttpPut]
         [Route("Edit")]
-        public async Task<IActionResult> Edit([FromBody] ProjectDTO projectDto)
+        public async Task<IActionResult> Edit([FromBody] AssignmentDTO assignmentDto)
         {
             var rsp = new Response<bool>();
-
             try
             {
-                var user = await _userService.GetUserById(projectDto.UserID);
+                var project = await _projectService.GetProjectById(assignmentDto.ProjectId);
 
-                if (user == null)
+                if (project == null)
                 {
                     rsp.status = false;
-                    rsp.message = "Usuario no encontrado";
+                    rsp.message = "Project not found";
                     return NotFound(rsp);
                 }
 
-                var project = _mapper.Map<Project>(projectDto);
-                var command = new UpdateProjectCommand(project);
+                var assignment = _mapper.Map<Assignment>(assignmentDto);
+                var command = new UpdateAssignmentCommand(assignment);
 
                 rsp.status = true;
-                await _projectService.Update(command);
+                await _assignmentService.Update(command);
                 rsp.value = true;
             }
             catch (Exception ex)
@@ -153,8 +158,8 @@ namespace CodeAgenda.Web.Controllers
             try
             {
                 rsp.status = true;
-                var command = new DeleteProjectCommand(id);
-                await _projectService.Delete(command);
+                var command = new DeleteAssignmentCommand(id);
+                await _assignmentService.Delete(command);
             }
             catch (Exception ex)
             {
@@ -166,4 +171,3 @@ namespace CodeAgenda.Web.Controllers
         }
     }
 }
-

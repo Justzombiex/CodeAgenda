@@ -1,11 +1,14 @@
-﻿using CodeAgenda.Application.Assignments.Commands.CreateTag;
+﻿using AutoMapper;
+using CodeAgenda.Application.Assignments.Commands.CreateTag;
 using CodeAgenda.Application.Assignments.Commands.DeleteTag;
 using CodeAgenda.Application.Assignments.Commands.UpdateTag;
 using CodeAgenda.Application.Assignments.Queries.GetAllTags;
+using CodeAgenda.Application.Assignments.Queries.GetAssignmnetById;
 using CodeAgenda.Application.Assignments.Queries.GetTagByid;
 using CodeAgenda.Domain.Entities.Assignments;
 using CodeAgenda.DTO.Assignments;
 using CodeAgenda.Services.Interfaces;
+using CodeAgenda.Services.Services;
 using CodeAgenda.Utility.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +20,14 @@ namespace CodeAgenda.Web.Controllers
     {
         private readonly ITagAssignmentService _tagAssignmentService;
         private readonly IAssignmentService _assignmentService;
+        private readonly IMapper _mapper;
 
-        public TagAssignmentController(ITagAssignmentService tagassignmentService)
+        public TagAssignmentController(ITagAssignmentService tagassignmentService, IAssignmentService assignmentService, IMapper mapper)
         {
             _tagAssignmentService = tagassignmentService;
+            _assignmentService = assignmentService;
+            _mapper = mapper;
+
         }
 
         [HttpGet]
@@ -75,18 +82,19 @@ namespace CodeAgenda.Web.Controllers
         public async Task<IActionResult> Create([FromBody] TagAssignmentDTO tagAssignmentDto)
         {
             var rsp = new Response<TagAssignmentDTO>();
-
             try
             {
+                var assignment = await _assignmentService.GetAssignmentById(tagAssignmentDto.AssignmentId);
 
-                var assignment = _assignmentService.GetById(tagAssignmentDto.AssignmentId);
+                if (assignment == null)
+                {
+                    rsp.status = false;
+                    rsp.message = "Assignment not found";
+                    return NotFound(rsp);
+                }
 
-                var command = new CreateTagAssignmentCommand
-                (
-                    tagAssignmentDto.Name,
-                    tagAssignmentDto.Color,
-                    assignment
-                );
+                var tagAssignment = _mapper.Map<TagAssignment>(tagAssignmentDto);
+                var command = new CreateTagAssignmentCommand(tagAssignment.Name, tagAssignment.Color, assignment);
 
                 rsp.status = true;
                 rsp.value = await _tagAssignmentService.Create(command);
@@ -101,24 +109,16 @@ namespace CodeAgenda.Web.Controllers
         }
 
         [HttpPut]
-        [Route("Edit/{id:guid}")]
-        public async Task<IActionResult> Edit([FromBody] TagAssignmentDTO tagAssignmentDto, Guid id)
+        [Route("Edit")]
+        public async Task<IActionResult> Edit([FromBody] TagAssignmentDTO tagAssignmentDto)
         {
             var rsp = new Response<bool>();
 
             try
             {
-                var assignment = _assignmentService.GetById(tagAssignmentDto.AssignmentId);
+                var assignment = await _assignmentService.GetAssignmentById(tagAssignmentDto.AssignmentId);
 
-                var tagAssignment = new TagAssignment
-                (
-                    tagAssignmentDto.Name,
-                    tagAssignmentDto.Color,
-                    assignment,
-                    id
-
-                );
-
+                var tagAssignment = _mapper.Map<TagAssignment>(tagAssignmentDto);
                 var command = new UpdateTagAssignmentCommand(tagAssignment);
 
                 rsp.status = true;

@@ -37,6 +37,8 @@ namespace CodeAgenda.Web
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IProjectService, ProjectService>();
+            builder.Services.AddScoped<IAssignmentService, AssignmentService>();
+            builder.Services.AddScoped<ITagAssignmentService, TagAssignmentService>();
 
             builder.Services.AddScoped<ApplicationContext>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

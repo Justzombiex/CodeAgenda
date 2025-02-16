@@ -4,6 +4,9 @@ using CodeAgenda.Application.Projects.Commands.DeleteProject;
 using CodeAgenda.Application.Projects.Commands.UpdateProject;
 using CodeAgenda.Application.Projects.Queries.GetAllProjects;
 using CodeAgenda.Application.Projects.Queries.GetProjectById;
+using CodeAgenda.Application.Users.Queries.GetUserById;
+using CodeAgenda.Domain.Entities.Projects;
+using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.DTO.Projects;
 using CodeAgenda.Services.Interfaces;
 using MediatR;
@@ -85,6 +88,14 @@ namespace CodeAgenda.Services.Services
             {
                 throw new ApplicationException(ex.Message);
             }
+        }
+
+        public async Task<Project?> GetProjectById(Guid projectId)
+        {
+            var query = new GetProjectByIdQuery(projectId);
+            var projectDto = await _mediator.Send(query);
+            var project = _mapper.Map<Project>(projectDto);
+            return project;
         }
     }
 }

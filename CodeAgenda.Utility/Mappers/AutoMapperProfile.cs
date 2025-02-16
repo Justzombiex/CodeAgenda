@@ -7,6 +7,7 @@ using CodeAgenda.DTO.Assignments;
 using CodeAgenda.DTO.Common;
 using CodeAgenda.DTO.Projects;
 using CodeAgenda.DTO.Users;
+using System.Drawing;
 
 namespace CodeAgenda.Utility.Mappers
 {
@@ -43,7 +44,12 @@ namespace CodeAgenda.Utility.Mappers
             #endregion Assignment
 
             #region TagAssignment
-            CreateMap<TagAssignment, TagAssignmentDTO>().ReverseMap();
+            CreateMap<TagAssignmentDTO, TagAssignment>()
+            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
+
+            CreateMap<TagAssignment, TagAssignmentDTO>()
+            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color.Name));
+
             #endregion TagAssignment
 
             #region TagProject

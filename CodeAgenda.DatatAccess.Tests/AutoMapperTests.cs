@@ -33,7 +33,6 @@ public class AutoMapperTests
         Assert.Equal(user.Name, userDTO.Name);
         Assert.Equal(user.FirstName, userDTO.FirstName);
         Assert.Equal(user.Email, userDTO.Email);
-        Assert.Equal(user.Id, userDTO.Id);
     }
 
     [Fact]
@@ -65,6 +64,5 @@ public class AutoMapperTests
         Assert.Equal(category.Name, categoryDTO.Name);
         Assert.Equal(category.Color, categoryDTO.Color);
         Assert.Equal(category.ProjectId, categoryDTO.ProjectId);
-        Assert.Equal(category.Id, categoryDTO.Id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using CodeAgenda.Application.Users.Commands.CreateUser;
+﻿using AutoMapper;
+using CodeAgenda.Application.Users.Commands.CreateUser;
 using CodeAgenda.Application.Users.Commands.DeleteUser;
 using CodeAgenda.Application.Users.Commands.UpdateUser;
 using CodeAgenda.Application.Users.Queries.GetAllUsers;
@@ -16,10 +17,12 @@ namespace CodeAgenda.Web.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -77,13 +80,8 @@ namespace CodeAgenda.Web.Controllers
 
             try
             {
-                // Mapea UserDTO a CreateUserCommand
-                var command = new CreateUserCommand
-                (
-                    userDto.Name,
-                    userDto.FirstName,
-                    userDto.Email
-                );
+                var user = _mapper.Map<User>(userDto);
+                var command = new CreateUserCommand(user.Name,user.FirstName,user.Email);
 
                 rsp.status = true;
                 rsp.value = await _userService.Create(command);
@@ -98,22 +96,14 @@ namespace CodeAgenda.Web.Controllers
         }
 
         [HttpPut]
-        [Route("Edit/{id:guid}")]
-        public async Task<IActionResult> Edit([FromBody] UserDTO userDto, Guid id)
+        [Route("Edit")]
+        public async Task<IActionResult> Edit([FromBody] UserDTO userDto)
         {
             var rsp = new Response<bool>();
 
             try
             {
-                var user = new User
-                (
-                    userDto.Name,
-                    userDto.FirstName,
-                    userDto.Email,
-                    id
-
-                );
-
+                var user = _mapper.Map<User>(userDto);
                 var command = new UpdateUserCommand(user);
 
                 rsp.status = true;
