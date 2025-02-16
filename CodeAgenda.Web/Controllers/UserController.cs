@@ -117,7 +117,7 @@ namespace CodeAgenda.Web.Controllers
                 var command = new UpdateUserCommand(user);
 
                 rsp.status = true;
-                _userService.Update(command);
+                await _userService.Update(command);
                 rsp.value = true;
             }
             catch (Exception ex)
@@ -139,7 +139,7 @@ namespace CodeAgenda.Web.Controllers
             {
                 rsp.status = true;
                 var command = new DeleteUserCommand(id);
-                _userService.Delete(command);
+                await _userService.Delete(command);
                 rsp.value= true;
             }
             catch (Exception ex)

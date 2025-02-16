@@ -144,7 +144,7 @@ namespace CodeAgenda.Web.Controllers
                 var command = new UpdateProjectCommand(project);
 
                 rsp.status = true;
-                _projectService.Update(command);
+                await _projectService.Update(command);
                 rsp.value = true;
             }
             catch (Exception ex)
@@ -166,7 +166,7 @@ namespace CodeAgenda.Web.Controllers
             {
                 rsp.status = true;
                 var command = new DeleteProjectCommand(id);
-                _projectService.Delete(command);
+                await _projectService.Delete(command);
             }
             catch (Exception ex)
             {
