@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.Web", "CodeAgend
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.IOC", "CodeAgend.IOC\CodeAgenda.IOC.csproj", "{53D030E1-0A86-44E9-AE28-EBC82A4527AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeAgenda.DTO", "CodeAgenda.DTO\CodeAgenda.DTO.csproj", "{B0F80EDB-1462-4082-9DC3-6B74FA56D53F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.DTO", "CodeAgenda.DTO\CodeAgenda.DTO.csproj", "{B0F80EDB-1462-4082-9DC3-6B74FA56D53F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeAgenda.Application", "CodeAgenda.Application\CodeAgenda.Application.csproj", "{1E64AD79-35A1-4E02-A415-6B00C4113645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.Application", "CodeAgenda.Application\CodeAgenda.Application.csproj", "{1E64AD79-35A1-4E02-A415-6B00C4113645}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.Utility", "CodeAgenda.Utility\CodeAgenda.Utility.csproj", "{401E46F4-978D-436A-BE61-18026635F004}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeAgenda.Services", "CodeAgenda.Servics\CodeAgenda.Services.csproj", "{B347C2D4-644A-4F18-8DC9-AE9CA71FD0D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{1E64AD79-35A1-4E02-A415-6B00C4113645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E64AD79-35A1-4E02-A415-6B00C4113645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E64AD79-35A1-4E02-A415-6B00C4113645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401E46F4-978D-436A-BE61-18026635F004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401E46F4-978D-436A-BE61-18026635F004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401E46F4-978D-436A-BE61-18026635F004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401E46F4-978D-436A-BE61-18026635F004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B347C2D4-644A-4F18-8DC9-AE9CA71FD0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B347C2D4-644A-4F18-8DC9-AE9CA71FD0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B347C2D4-644A-4F18-8DC9-AE9CA71FD0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B347C2D4-644A-4F18-8DC9-AE9CA71FD0D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

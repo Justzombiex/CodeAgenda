@@ -15,6 +15,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\CodeAgend.IOC\CodeAgenda.IOC.csproj" />
 		<ProjectReference Include="..\CodeAgenda.DTO\CodeAgenda.DTO.csproj" />
+		<ProjectReference Include="..\CodeAgenda.Servics\CodeAgenda.Services.csproj" />
 	</ItemGroup>
 
 </Project>

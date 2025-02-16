@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
@@ -14,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodeAgenda.DataAccess\CodeAgenda.DataAccess.csproj" />
+    <ProjectReference Include="..\CodeAgenda.Utility\CodeAgenda.Utility.csproj" />
   </ItemGroup>
 
 </Project>

@@ -21,6 +21,7 @@
     <ProjectReference Include="..\CodeAgenda.Contracts\CodeAgenda.Contracts.csproj" />
     <ProjectReference Include="..\CodeAgenda.DataAccess\CodeAgenda.DataAccess.csproj" />
     <ProjectReference Include="..\CodeAgenda.DTO\CodeAgenda.DTO.csproj" />
+    <ProjectReference Include="..\CodeAgenda.Utility\CodeAgenda.Utility.csproj" />
     <ProjectReference Include="..\CodeAgenda.Web\CodeAgenda.Web.csproj" />
   </ItemGroup>
 

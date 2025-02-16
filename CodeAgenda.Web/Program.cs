@@ -1,4 +1,16 @@
 using CodeAgenda.IOC.Dependencies;
+using CodeAgenda.Services.Interfaces;
+using CodeAgenda.Services;
+using CodeAgenda.Contracts;
+using CodeAgenda.DataAccess.Concrete;
+using CodeAgenda.DataAccess;
+using CodeAgenda.DataAccess.Repositories.Assignments;
+using CodeAgenda.DataAccess.Repositories;
+using CodeAgenda.DataAccess.Abstract.Users;
+using CodeAgenda.Application;
+using CodeAgenda.DataAccess.Abstract.Projects;
+using CodeAgenda.DataAccess.Abstract.Common;
+using CodeAgenda.DataAccess.Abstract.Assignments;
 
 namespace CodeAgenda.Web
 {
@@ -15,7 +27,26 @@ namespace CodeAgenda.Web
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddMediatR(new MediatRServiceConfiguration()
+            {
+                AutoRegisterRequestProcessors = true,
+            }.RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly));
+
             builder.Services.InjectDependencies(builder.Configuration);
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ApplicationContext>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<INoteRepository, NoteRepository>();
+            builder.Services.AddScoped<ITagRepository, TagRepository>();
+            builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+
 
             var app = builder.Build();
 

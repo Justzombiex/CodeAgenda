@@ -8,7 +8,7 @@ using CodeAgenda.DTO.Common;
 using CodeAgenda.DTO.Projects;
 using CodeAgenda.DTO.Users;
 
-namespace CodeAgenda.Web.Mappers
+namespace CodeAgenda.Utility.Mappers
 {
     public class AutoMapperProfile : Profile
     {
