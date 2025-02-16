@@ -19,7 +19,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         Project? IProjectRepository.GetById(Guid id)
         {
-            return _context.Set<Project>().Find(id);
+            var project = _context.Project.FirstOrDefault(x => x.Id == id);
+            if (project == null)
+            {
+                throw new Exception("Project not found");
+            }
+            return project;
         }
 
         public IEnumerable<Project> GetAll()

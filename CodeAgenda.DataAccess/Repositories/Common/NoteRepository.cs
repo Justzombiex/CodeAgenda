@@ -19,7 +19,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         Note? INoteRepository.GetById(Guid id)
         {
-            return _context.Set<Note>().Find(id);
+            var note = _context.Note.FirstOrDefault(x => x.Id == id);
+            if (note == null)
+            {
+                throw new Exception("Note not found");
+            }
+            return note;
         }
 
         public IEnumerable<Note> GetAll()

@@ -19,7 +19,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         User? IUserRepository.GetById(Guid id)
         {
-            return _context.Set<User>().Find(id);
+            var user = _context.User.FirstOrDefault(x => x.Id == id);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
         }
 
         public IEnumerable<User> GetAll()

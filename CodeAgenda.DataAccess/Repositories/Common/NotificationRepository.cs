@@ -19,7 +19,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         Notification? INotificationRepository.GetById(Guid id)
         {
-            return _context.Set<Notification>().Find(id);
+            var notification = _context.Notification.FirstOrDefault(x => x.Id == id);
+            if (notification == null)
+            {
+                throw new Exception("Notification not found");
+            }
+            return notification;
         }
 
         public IEnumerable<Notification> GetAll()

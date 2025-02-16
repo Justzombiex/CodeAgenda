@@ -20,7 +20,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         Category? ICategoryRepository.GetById(Guid id)
         {
-            return _context.Set<Category>().Find(id);
+            var category = _context.Category.FirstOrDefault(x => x.Id == id);
+            if (category == null)
+            {
+                throw new Exception("Category not found");
+            }
+            return category;
         }
 
         public IEnumerable<Category> GetAll()

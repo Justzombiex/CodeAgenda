@@ -27,7 +27,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         public Assignment? GetById(Guid id)
         {
-            return _context.Assignment.FirstOrDefault(x => x.Id == id);
+            var assignment = _context.Assignment.FirstOrDefault(x => x.Id == id);
+            if (assignment == null)
+            {
+                throw new Exception("Assignment not found");
+            }
+            return assignment;
         }
 
         public IEnumerable<Assignment> GetAll()

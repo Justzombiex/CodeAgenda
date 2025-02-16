@@ -19,7 +19,12 @@ namespace CodeAgenda.DataAccess.Repositories
 
         Tag? ITagRepository.GetById(Guid id)
         {
-            return _context.Set<Tag>().Find(id);
+            var tag = _context.Tag.FirstOrDefault(x => x.Id == id);
+            if (tag == null)
+            {
+                throw new Exception("Tag not found");
+            }
+            return tag;
         }
 
         public IEnumerable<Tag> GetAll()
