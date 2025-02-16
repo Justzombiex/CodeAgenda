@@ -3,6 +3,7 @@ using CodeAgenda.Application.Users.Commands.CreateUser;
 using CodeAgenda.Application.Users.Commands.DeleteUser;
 using CodeAgenda.Application.Users.Commands.UpdateUser;
 using CodeAgenda.Application.Users.Queries.GetAllUsers;
+using CodeAgenda.Application.Users.Queries.GetUserById;
 using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.DTO.Users;
 using CodeAgenda.Services.Interfaces;
@@ -30,31 +31,30 @@ namespace CodeAgenda.Services
             }
             catch (Exception ex)
             {
-                // Manejar la excepción adecuadamente
                 throw new ApplicationException("Error al crear el usuario", ex);
             }
         }
 
-        public async Task Delete(Guid id)
+        public async Task Delete(DeleteUserCommand command)
         {
             try
             {
-                var command = new DeleteUserCommand(id);
                 await _mediator.Send(command);
             }
             catch (Exception ex)
             {
-                // Manejar la excepción adecuadamente
+            
                 throw new ApplicationException("Error al eliminar el usuario", ex);
             }
         }
 
-        public async Task<List<UserDTO>> GetAll()
+        public async Task<List<UserDTO>> GetAll(GetAllUsersQuery query)
         {
             try
             {
-                var users = await _mediator.Send(new GetAllUsersQuery());
-                return _mapper.Map<List<UserDTO>>(users);
+                var users = await _mediator.Send(query);
+                var userDtos = _mapper.Map<List<UserDTO>>(users);
+                return userDtos;
             }
             catch (Exception ex)
             {
@@ -62,11 +62,24 @@ namespace CodeAgenda.Services
             }
         }
 
-        public async Task Update(UserDTO userDto)
+        public async Task<UserDTO?> GetById(GetUserByIdQuery query)
         {
             try
             {
-                var command = new UpdateUserCommand(_mapper.Map<User>(userDto));
+                var user = await _mediator.Send(query);
+                var userDto = _mapper.Map<UserDTO>(user);
+                return userDto;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al obtener el usuario", ex);
+            }
+        }
+
+        public async Task Update(UpdateUserCommand command)
+        {
+            try
+            {
                 await _mediator.Send(command);
             }
             catch (Exception ex)
