@@ -119,9 +119,6 @@ namespace CodeAgenda.Web.Controllers.Common
 
             try
             {
-                //TODO: Revisar el update
-                var project = await _projectService.GetProjectById(noteProjectDto.ProjectId);
-
                 var noteProject = _mapper.Map<NoteProject>(noteProjectDto);
                 var command = new UpdateNoteProjectCommand(noteProject);
 

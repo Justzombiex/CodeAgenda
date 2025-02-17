@@ -120,14 +120,6 @@ namespace CodeAgenda.Web.Controllers.Projects
 
             try
             {
-                var user = await _userService.GetUserById(projectDto.UserID);
-
-                if (user == null)
-                {
-                    rsp.status = false;
-                    rsp.message = "Usuario no encontrado";
-                    return NotFound(rsp);
-                }
 
                 var project = _mapper.Map<Project>(projectDto);
                 var command = new UpdateProjectCommand(project);

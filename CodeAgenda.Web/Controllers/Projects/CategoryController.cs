@@ -114,8 +114,6 @@ namespace CodeAgenda.Web.Controllers.Projects
 
             try
             {
-                var project = await _projectService.GetProjectById(categoryDto.ProjectId);
-
                 var category = _mapper.Map<Category>(categoryDto);
                 var command = new UpdateCategoryCommand(category);
 

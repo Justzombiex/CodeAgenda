@@ -115,8 +115,6 @@ namespace CodeAgenda.Web.Controllers.Common
 
             try
             {
-                var assignment = await _assignmentService.GetAssignmentById(tagAssignmentDto.AssignmentId);
-
                 var tagAssignment = _mapper.Map<TagAssignment>(tagAssignmentDto);
                 var command = new UpdateTagAssignmentCommand(tagAssignment);
 

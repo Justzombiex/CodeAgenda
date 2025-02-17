@@ -115,8 +115,6 @@ namespace CodeAgenda.Web.Controllers.Common
 
             try
             {
-                var project = await _projectService.GetProjectById(tagProjectDto.ProjectId);
-
                 var tagProject = _mapper.Map<TagProject>(tagProjectDto);
                 var command = new UpdateTagProjectCommand(tagProject);
 

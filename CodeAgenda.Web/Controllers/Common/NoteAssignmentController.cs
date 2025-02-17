@@ -119,9 +119,6 @@ namespace CodeAgenda.Web.Controllers.Common
 
             try
             {
-                //TODO: Revisar el update
-                var assignment = await _assignmentService.GetAssignmentById(noteAssignmentDto.AssignmentId);
-
                 var noteAssignment = _mapper.Map<NoteAssignment>(noteAssignmentDto);
                 var command = new UpdateNoteAssignmentCommand(noteAssignment);
 

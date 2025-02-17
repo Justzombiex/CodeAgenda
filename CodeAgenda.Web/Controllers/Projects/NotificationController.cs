@@ -114,8 +114,6 @@ namespace CodeAgenda.Web.Controllers.Projects
 
             try
             {
-                var project = await _projectService.GetProjectById(notificationDto.ProjectId);
-
                 var notification = _mapper.Map<Notification>(notificationDto);
                 var command = new UpdateNotificationCommand(notification);
 
