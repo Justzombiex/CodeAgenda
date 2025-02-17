@@ -20,7 +20,6 @@ namespace CodeAgenda.Application.Users.Commands.UpdateUser
 
         public Task Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            //TODO: Validar que exista el usuario
             _userRepository.Update(request.User);
             _unitOfWork.SaveChanges();
             return Task.CompletedTask;

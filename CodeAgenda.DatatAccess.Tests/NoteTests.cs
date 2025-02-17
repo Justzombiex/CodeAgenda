@@ -39,7 +39,6 @@ namespace CodeAgenda.DatatAccess.Tests
             string content
             )
         {
-            //TODO: Verificar la relación de las notas con proyectos y assignments
             //Arrange
             Guid id = Guid.NewGuid();
             Project project = _projectRepository.GetAll().First();
@@ -62,7 +61,7 @@ namespace CodeAgenda.DatatAccess.Tests
             string content
             )
         {
-            //TODO: Verificar la relación de las notas con proyectos y assignments
+
             //Arrange
             Guid id = Guid.NewGuid();
             Assignment assignment = _assignmentRepository.GetAll().First();
