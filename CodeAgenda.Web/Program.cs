@@ -51,6 +51,8 @@ namespace CodeAgenda.Web
             builder.Services.AddScoped<ITagProjectService, TagProjectService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
+            builder.Services.AddScoped<INoteProjectService, NoteProjectService>();
+            builder.Services.AddScoped<INoteAssignmentService, NoteAssignmentService>();
 
             builder.Services.AddScoped<ApplicationContext>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
