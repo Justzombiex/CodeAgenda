@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using CodeAgenda.Application.Assignments.Commands.DeleteTag;
-using CodeAgenda.Application.Common.Queries.GetAllTags;
 using CodeAgenda.Application.Common.Queries.GetTagByid;
 using CodeAgenda.Application.Projects.Commands.CreateCategory;
 using CodeAgenda.Application.Projects.Commands.DeleteCategory;
