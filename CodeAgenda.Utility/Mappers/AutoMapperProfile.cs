@@ -13,7 +13,7 @@ namespace CodeAgenda.Utility.Mappers
 {
     public class AutoMapperProfile : Profile
     {
-        public AutoMapperProfile() 
+        public AutoMapperProfile()
         {
             #region User
             CreateMap<User, UserDTO>().ReverseMap();
@@ -44,17 +44,25 @@ namespace CodeAgenda.Utility.Mappers
             #endregion Assignment
 
             #region TagAssignment
-            CreateMap<TagAssignmentDTO, TagAssignment>()
-            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
+            {
+                CreateMap<TagAssignment, TagAssignmentDTO>()
+             .ForMember(dest => dest.Color, opt => opt.MapFrom(src => GetColorName(src.Color)));
 
-            CreateMap<TagAssignment, TagAssignmentDTO>()
-            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color.Name));
+                CreateMap<TagAssignmentDTO, TagAssignment>()
+                    .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
 
-            #endregion TagAssignment
+                #endregion TagAssignment
 
-            #region TagProject
-            CreateMap<TagProject, TagProjectDTO>().ReverseMap();
-            #endregion TagProject
+                #region TagProject
+                CreateMap<TagProject, TagProjectDTO>().ReverseMap();
+                #endregion TagProject
+            }
+        }
+
+        private string GetColorName(Color color)
+        {
+            return color.IsKnownColor ? color.Name : $"#{color.R:X2}{color.G:X2}{color.B:X2}";
         }
     }
+
 }

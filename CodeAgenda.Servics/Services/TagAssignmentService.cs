@@ -53,8 +53,8 @@ namespace CodeAgenda.Services.Services
             try
             {
                 var tagAssignments = await _mediator.Send(query);
-                var tagAssignmentDtos = _mapper.Map<List<TagAssignmentDTO>>(tagAssignments);
-                return tagAssignmentDtos;
+                var tagAssignment = _mapper.Map<List<TagAssignmentDTO>>(tagAssignments.OfType<TagAssignment>());
+                return tagAssignment;
             }
             catch (Exception ex)
             {
@@ -67,8 +67,8 @@ namespace CodeAgenda.Services.Services
             try
             {
                 var tagAssignment = await _mediator.Send(query);
-                var tagAssignmentDto = _mapper.Map<TagAssignmentDTO>(tagAssignment);
-                return tagAssignmentDto;
+                var tagAssignmentDTO = _mapper.Map<TagAssignmentDTO>(tagAssignment);
+                return tagAssignmentDTO;
             }
             catch (Exception ex)
             {

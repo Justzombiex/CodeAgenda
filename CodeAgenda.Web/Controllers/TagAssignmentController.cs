@@ -39,10 +39,10 @@ namespace CodeAgenda.Web.Controllers
             try
             {
                 var query = new GetAllTagsQuery();
-                var tagassignmentDtos = await _tagAssignmentService.GetAll(query);
+                var tagAssignments = await _tagAssignmentService.GetAll(query);
 
                 rsp.status = true;
-                rsp.value = tagassignmentDtos;
+                rsp.value = tagAssignments;
             }
             catch (Exception ex)
             {

@@ -29,9 +29,29 @@ namespace CodeAgenda.DataAccess.Concrete
         public DbSet<Tag> Tag { get; set; }
 
         /// <summary>
+        /// TagAssignment table 
+        /// </summary>
+        public DbSet<TagAssignment> TagAssignments { get; set; }
+
+        /// <summary>
+        /// TagProjects table
+        /// </summary>
+        public DbSet<TagProject> TagProjects { get; set; }
+
+        /// <summary>
         /// Note table.
         /// </summary>
         public DbSet<Note> Note { get; set; }
+
+        /// <summary>
+        /// NoteAssignment table 
+        /// </summary>
+        public DbSet<NoteAssignment> NoteAssignments { get; set; }
+
+        /// <summary>
+        /// NoteProjects table
+        /// </summary>
+        public DbSet<NoteProject> NoteProjects { get; set; }
 
         /// <summary>
         /// Notification table.
