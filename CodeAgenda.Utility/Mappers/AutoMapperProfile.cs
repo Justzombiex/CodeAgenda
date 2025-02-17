@@ -44,19 +44,25 @@ namespace CodeAgenda.Utility.Mappers
             #endregion Assignment
 
             #region TagAssignment
-            {
-                CreateMap<TagAssignment, TagAssignmentDTO>()
-             .ForMember(dest => dest.Color, opt => opt.MapFrom(src => GetColorName(src.Color)));
 
-                CreateMap<TagAssignmentDTO, TagAssignment>()
-                    .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
+            CreateMap<TagAssignment, TagAssignmentDTO>()
+                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => GetColorName(src.Color)));
 
-                #endregion TagAssignment
+            CreateMap<TagAssignmentDTO, TagAssignment>()
+                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
 
-                #region TagProject
-                CreateMap<TagProject, TagProjectDTO>().ReverseMap();
-                #endregion TagProject
-            }
+            #endregion TagAssignment
+
+            #region TagProject
+
+            CreateMap<TagProject, TagProjectDTO>()
+                    .ForMember(dest => dest.Color, opt => opt.MapFrom(src => GetColorName(src.Color)));
+
+            CreateMap<TagProjectDTO, TagProject>()
+                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
+
+            #endregion TagProject
+
         }
 
         private string GetColorName(Color color)
