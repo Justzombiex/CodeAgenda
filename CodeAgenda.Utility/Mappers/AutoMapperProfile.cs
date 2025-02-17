@@ -24,7 +24,11 @@ namespace CodeAgenda.Utility.Mappers
             #endregion Project
 
             #region Category
-            CreateMap<Category, CategoryDTO>().ReverseMap();
+            CreateMap<Category, CategoryDTO>()
+                   .ForMember(dest => dest.Color, opt => opt.MapFrom(src => GetColorName(src.Color)));
+
+            CreateMap<CategoryDTO, Category>()
+                   .ForMember(dest => dest.Color, opt => opt.MapFrom(src => Color.FromName(src.Color)));
             #endregion Category
 
             #region Notification

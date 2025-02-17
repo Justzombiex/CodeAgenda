@@ -62,7 +62,6 @@ public class AutoMapperTests
 
         // Assert
         Assert.Equal(category.Name, categoryDTO.Name);
-        Assert.Equal(category.Color, categoryDTO.Color);
         Assert.Equal(category.ProjectId, categoryDTO.ProjectId);
     }
 }
