@@ -7,6 +7,7 @@ CodeAgenda is a project designed to learn new technologies within the .NET envir
 - **Entity Framework Core**: CodeAgenda utilizes Entity Framework Core to handle data access.
 - **Mediator**: Mediator is used to handle the communication between components in the application, promoting loose coupling and high cohesion.
 - **CQRS (Command Query Responsibility Segregation)**: The application follows the CQRS pattern to separate the responsibilities of reading and writing data.
+- **AutoMapper: Simplifies object-to-object mapping by providing a straightforward configuration and integration process, enhancing the modularity and maintainability of the application.
 
 ## Project Structure
 
