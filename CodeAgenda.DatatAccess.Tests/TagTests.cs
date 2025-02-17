@@ -5,8 +5,10 @@ using CodeAgenda.DataAccess.Abstract.Projects;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories;
 using CodeAgenda.DataAccess.Repositories.Assignments;
+using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.DatatAccess.Tests.Utilities;
 using CodeAgenda.Domain.Entities.Assignments;
+using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 using System.Drawing;
 

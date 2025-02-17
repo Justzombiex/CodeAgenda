@@ -1,5 +1,4 @@
 using CodeAgenda.IOC.Dependencies;
-using CodeAgenda.Services.Interfaces;
 using CodeAgenda.Contracts;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess;
@@ -10,7 +9,17 @@ using CodeAgenda.Application;
 using CodeAgenda.DataAccess.Abstract.Projects;
 using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Assignments;
-using CodeAgenda.Services.Services;
+using CodeAgenda.Services.Services.Assignments;
+using CodeAgenda.Services.Services.Common;
+using CodeAgenda.Services.Services.Projects;
+using CodeAgenda.Services.Services.Users;
+using CodeAgenda.Services.Interfaces.Assignments;
+using CodeAgenda.Services.Interfaces.Projects;
+using CodeAgenda.Services.Interfaces.Common;
+using CodeAgenda.Services.Interfaces.Users;
+using CodeAgenda.Contracts.Projects;
+using CodeAgenda.DataAccess.Repositories.Common;
+using CodeAgenda.DataAccess.Repositories.Projects;
 
 namespace CodeAgenda.Web
 {

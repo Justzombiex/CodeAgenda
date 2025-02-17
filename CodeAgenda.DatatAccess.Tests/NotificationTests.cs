@@ -1,11 +1,11 @@
 ﻿using CodeAgenda.Contracts;
+using CodeAgenda.Contracts.Projects;
 using CodeAgenda.DataAccess;
-using CodeAgenda.DataAccess.Abstract.Common;
 using CodeAgenda.DataAccess.Abstract.Projects;
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories;
+using CodeAgenda.DataAccess.Repositories.Projects;
 using CodeAgenda.DatatAccess.Tests.Utilities;
-using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 
 namespace CodeAgenda.DatatAccess.Tests

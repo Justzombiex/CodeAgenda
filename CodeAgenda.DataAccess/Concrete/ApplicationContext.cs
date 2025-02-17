@@ -105,11 +105,8 @@ namespace CodeAgenda.DataAccess.Concrete
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseNpgsql("Host=localhost;Database=CodeAgendaDB;Username=postgres;Password=1234");
-        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
