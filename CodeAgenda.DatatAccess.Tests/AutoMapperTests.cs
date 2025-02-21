@@ -24,7 +24,7 @@ public class AutoMapperTests
     public void Should_Map_User_To_UserDTO()
     {
         // Arrange
-        var user = new User("John", "Doe", "john.doe@example.com", Guid.NewGuid());
+        var user = new User("John", "Doe", "john.doe@example.com", "1234", Guid.NewGuid());
 
         // Act
         var userDTO = _mapper.Map<UserDTO>(user);
@@ -39,7 +39,7 @@ public class AutoMapperTests
     public void Should_Map_Project_To_ProjectDTO()
     {
         // Arrange
-        var project = new Project("Project1", "Description1", DateTime.Now, DateTime.Now.AddDays(30), new User("John", "Doe", "john.doe@example.com", Guid.NewGuid()), Guid.NewGuid());
+        var project = new Project("Project1", "Description1", DateTime.Now, DateTime.Now.AddDays(30), new User("John", "Doe", "john.doe@example.com", "1234", Guid.NewGuid()), Guid.NewGuid());
 
         // Act
         var projectDTO = _mapper.Map<ProjectDTO>(project);
@@ -55,7 +55,7 @@ public class AutoMapperTests
     public void Should_Map_Category_To_CategoryDTO()
     {
         // Arrange
-        var category = new Category("Category1", new Color(), new Project("Project1", "Description1", DateTime.Now, DateTime.Now.AddDays(30), new User("John", "Doe", "john.doe@example.com", Guid.NewGuid()), Guid.NewGuid()), Guid.NewGuid());
+        var category = new Category("Category1", new Color(), new Project("Project1", "Description1", DateTime.Now, DateTime.Now.AddDays(30), new User("John", "Doe", "john.doe@example.com", "1234", Guid.NewGuid()), Guid.NewGuid()), Guid.NewGuid());
 
         // Act
         var categoryDTO = _mapper.Map<CategoryDTO>(category);

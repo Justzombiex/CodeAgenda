@@ -41,5 +41,16 @@ namespace CodeAgenda.DataAccess.Repositories
         {
             _context.User.Remove(User);
         }
+
+        public User? AuthorizeUser(string name, string pasword)
+        {
+            var user = _context.User.FirstOrDefault(u => u.Email == name && u.Password == pasword);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
+
+        }
     }
 }

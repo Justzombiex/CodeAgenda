@@ -22,17 +22,18 @@ namespace CodeAgenda.DatatAccess.Tests
         }
 
         [Theory]
-        [InlineData("Brian Michel", "Morales Cutting", "bmoralescutting@gmail.com")]
-        [InlineData("José Carlos", "García Cruz", "josegc@gmail.com")]
+        [InlineData("Brian Michel", "Morales Cutting", "bmoralescutting@gmail.com", "1234")]
+        [InlineData("José Carlos", "García Cruz", "josegc@gmail.com","5432")]
         public void Can_Add_New_User(
             string name,
             string firstName,
-            string email
+            string email,
+            string password
             )
         {
             //Arrange
             Guid id = Guid.NewGuid();
-            User User = new User(name, firstName, email, id);
+            User User = new User(name, firstName, email, password,id);
 
             //Execute
             _userRepository.Add(User);

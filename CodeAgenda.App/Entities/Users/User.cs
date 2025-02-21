@@ -24,6 +24,11 @@ namespace CodeAgenda.Domain.Entities.Users
         public string Email { get; set; }
 
         /// <summary>
+        /// Password for the user.
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
         /// Projects related to the User.
         /// </summary>
         [NotMapped]
@@ -51,12 +56,14 @@ namespace CodeAgenda.Domain.Entities.Users
         public User(string name,
             string firstName,
             string email,
+            string password,
             Guid id)
             : base(id)
         {
             Name = name;
             FirstName = firstName;
             Email = email;
+            Password = password;
             Projects = new();
             Notes = new();
         }

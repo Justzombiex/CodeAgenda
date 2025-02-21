@@ -2,6 +2,7 @@
 using CodeAgenda.Application.Users.Commands.CreateUser;
 using CodeAgenda.Application.Users.Commands.DeleteUser;
 using CodeAgenda.Application.Users.Commands.UpdateUser;
+using CodeAgenda.Application.Users.Queries.AuthorizeUser;
 using CodeAgenda.Application.Users.Queries.GetAllUsers;
 using CodeAgenda.Application.Users.Queries.GetUserById;
 using CodeAgenda.Domain.Entities.Users;
@@ -23,6 +24,28 @@ namespace CodeAgenda.Web.Controllers.Users
         {
             _userService = userService;
             _mapper = mapper;
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginDTO login)
+        {
+            var rsp = new Response<SessionDTO>();
+
+            try
+            {
+                
+                rsp.status = true;
+                var query = new AuthorizeUserQuery(login.Email, login.Password);
+                rsp.value = await _userService.AuthorizeUser(query);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.message = ex.Message;
+
+            }
+            return Ok(rsp);
         }
 
         [HttpGet]
@@ -81,7 +104,7 @@ namespace CodeAgenda.Web.Controllers.Users
             try
             {
                 var user = _mapper.Map<User>(userDto);
-                var command = new CreateUserCommand(user.Name, user.FirstName, user.Email);
+                var command = new CreateUserCommand(user.Name, user.FirstName, user.Email, user.Password);
 
                 rsp.status = true;
                 rsp.value = await _userService.Create(command);

@@ -17,6 +17,8 @@ namespace CodeAgenda.Utility.Mappers
         {
             #region User
             CreateMap<User, UserDTO>().ReverseMap();
+
+            CreateMap<User, SessionDTO>().ReverseMap();
             #endregion User
 
             #region Project

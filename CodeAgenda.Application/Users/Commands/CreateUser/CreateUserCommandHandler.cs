@@ -25,6 +25,7 @@ namespace CodeAgenda.Application.Users.Commands.CreateUser
                 request.name,
                 request.firstName,
                 request.email,
+                request.password,
                 Guid.NewGuid());
 
             _userRepository.Add(result);

@@ -1,6 +1,7 @@
 ﻿using CodeAgenda.Application.Users.Commands.CreateUser;
 using CodeAgenda.Application.Users.Commands.DeleteUser;
 using CodeAgenda.Application.Users.Commands.UpdateUser;
+using CodeAgenda.Application.Users.Queries.AuthorizeUser;
 using CodeAgenda.Application.Users.Queries.GetAllUsers;
 using CodeAgenda.Application.Users.Queries.GetUserById;
 using CodeAgenda.Domain.Entities.Users;
@@ -13,6 +14,7 @@ namespace CodeAgenda.Services.Interfaces.Users
         Task<UserDTO> Create(CreateUserCommand command);
         Task Delete(DeleteUserCommand command);
         Task Update(UpdateUserCommand command);
+        Task<SessionDTO> AuthorizeUser(AuthorizeUserQuery query);
         Task<List<UserDTO>> GetAll(GetAllUsersQuery query);
         Task<UserDTO> GetById(GetUserByIdQuery query);
         Task<User?> GetUserById(Guid userId);

@@ -35,5 +35,14 @@ namespace CodeAgenda.DataAccess.Abstract.Users
         /// </summary>
         /// <param name="note">User to delete.</param>
         void Delete(User User);
+
+        /// <summary>
+        /// Authorize a user based on their name and email.
+        /// </summary>
+        /// <param name="name">Name of the user.</param>
+        /// <param name="email">Email of the user.</param>
+        /// <returns>The authorized User, or null if not found.</returns>
+        public User? AuthorizeUser(string name, string email);
+
     }
 }

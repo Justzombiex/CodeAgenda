@@ -2,12 +2,14 @@
 using CodeAgenda.Application.Users.Commands.CreateUser;
 using CodeAgenda.Application.Users.Commands.DeleteUser;
 using CodeAgenda.Application.Users.Commands.UpdateUser;
+using CodeAgenda.Application.Users.Queries.AuthorizeUser;
 using CodeAgenda.Application.Users.Queries.GetAllUsers;
 using CodeAgenda.Application.Users.Queries.GetUserById;
 using CodeAgenda.Domain.Entities.Users;
 using CodeAgenda.DTO.Users;
 using CodeAgenda.Services.Interfaces.Users;
 using MediatR;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CodeAgenda.Services.Services.Users
 {
@@ -94,6 +96,20 @@ namespace CodeAgenda.Services.Services.Users
             var userDto = await _mediator.Send(query);
             var user = _mapper.Map<User>(userDto);
             return user;
+        }
+
+        public async Task<SessionDTO> AuthorizeUser(AuthorizeUserQuery query)
+        {
+            try
+            {
+                var user = await _mediator.Send(query);
+                var sessionDto = _mapper.Map<SessionDTO>(user);
+                return sessionDto;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message);
+            }
         }
     }
 }

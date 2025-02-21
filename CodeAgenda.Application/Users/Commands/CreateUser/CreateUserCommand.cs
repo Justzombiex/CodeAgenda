@@ -6,6 +6,7 @@ namespace CodeAgenda.Application.Users.Commands.CreateUser
     public record CreateUserCommand(
             string name,
             string firstName,
-            string email) : ICommand<User>;
+            string email,
+            string password) : ICommand<User>;
 
 }
