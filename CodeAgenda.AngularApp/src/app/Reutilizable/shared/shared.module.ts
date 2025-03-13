@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClient} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 //Angular material components
 import {MatCardModule} from '@angular/material/card';
@@ -38,7 +38,6 @@ import {MomentDateModule} from '@angular/material-moment-adapter'
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClient,
     MatCardModule,
     MatInputModule,
     MatSelectModule,
@@ -59,6 +58,11 @@ import {MomentDateModule} from '@angular/material-moment-adapter'
     MatDatepickerModule,
     MatNativeDateModule,
     MomentDateModule
+  ],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class SharedModule { }
