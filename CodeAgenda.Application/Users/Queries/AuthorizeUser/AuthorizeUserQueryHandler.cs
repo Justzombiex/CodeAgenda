@@ -17,7 +17,10 @@ namespace CodeAgenda.Application.Users.Queries.AuthorizeUser
 
         public Task<User?> Handle(AuthorizeUserQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_userRepository.AuthorizeUser(request.Email, request.Password));
+            var user = _userRepository.GetByEmail(request.Email);
+            if (user == null) return Task.FromResult<User?>(null);
+
+            return Task.FromResult(user.VerifyPassword(request.Password) ? user : null);
         }
     }
 }

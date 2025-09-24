@@ -1,4 +1,5 @@
-﻿using CodeAgenda.Domain.Entities.Common;
+﻿using BCrypt.Net;
+using CodeAgenda.Domain.Entities.Common;
 using CodeAgenda.Domain.Entities.Projects;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,7 +27,7 @@ namespace CodeAgenda.Domain.Entities.Users
         /// <summary>
         /// Password for the user.
         /// </summary>
-        public string Password { get; set; }
+        public string Password { get; private set; }
 
         /// <summary>
         /// Projects related to the User.
@@ -63,9 +64,28 @@ namespace CodeAgenda.Domain.Entities.Users
             Name = name;
             FirstName = firstName;
             Email = email;
-            Password = password;
+            SetPassword(password);
             Projects = new();
             Notes = new();
         }
+
+        private void SetPassword(string password)
+        {
+            string passwordToStore = password;
+
+            if (!password.StartsWith("$2a$"))
+            {
+                Password = BCrypt.Net.BCrypt.HashPassword(password);
+                return; 
+            }
+
+            Password = password;
+        }
+
+        public bool VerifyPassword(string password)
+        {     
+            return BCrypt.Net.BCrypt.Verify(password, Password);
+        }
+
     }
 }

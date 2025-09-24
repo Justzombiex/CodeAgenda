@@ -2,6 +2,7 @@
 using CodeAgenda.DataAccess.Concrete;
 using CodeAgenda.DataAccess.Repositories.Common;
 using CodeAgenda.Domain.Entities.Users;
+using System.Xml.Linq;
 
 namespace CodeAgenda.DataAccess.Repositories
 {
@@ -27,6 +28,18 @@ namespace CodeAgenda.DataAccess.Repositories
             return user;
         }
 
+        public User? GetByEmail(string email)
+        {
+
+            var user = _context.User.FirstOrDefault(u => u.Email == email);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
+
+        }
+
         public IEnumerable<User> GetAll()
         {
             return _context.User.ToList();
@@ -40,17 +53,6 @@ namespace CodeAgenda.DataAccess.Repositories
         public void Delete(User User)
         {
             _context.User.Remove(User);
-        }
-
-        public User? AuthorizeUser(string name, string pasword)
-        {
-            var user = _context.User.FirstOrDefault(u => u.Email == name && u.Password == pasword);
-            if (user == null)
-            {
-                throw new Exception("User not found");
-            }
-            return user;
-
         }
     }
 }

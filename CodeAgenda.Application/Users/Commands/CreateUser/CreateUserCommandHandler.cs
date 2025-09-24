@@ -21,6 +21,7 @@ namespace CodeAgenda.Application.Users.Commands.CreateUser
 
         public Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+
             User result = new User(
                 request.name,
                 request.firstName,

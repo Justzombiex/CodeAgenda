@@ -18,6 +18,13 @@ namespace CodeAgenda.DataAccess.Abstract.Users
         User? GetById(Guid id);
 
         /// <summary>
+        /// Gets a USer from DB
+        /// </summary>
+        /// <param name="email">User email</param>
+        /// <returns>User to exist in DB, otherwise <see langword="null"</returns>
+        User? GetByEmail(string email);
+
+        /// <summary>
         /// Gets all Users from DB.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -35,14 +42,6 @@ namespace CodeAgenda.DataAccess.Abstract.Users
         /// </summary>
         /// <param name="note">User to delete.</param>
         void Delete(User User);
-
-        /// <summary>
-        /// Authorize a user based on their name and email.
-        /// </summary>
-        /// <param name="name">Name of the user.</param>
-        /// <param name="email">Email of the user.</param>
-        /// <returns>The authorized User, or null if not found.</returns>
-        public User? AuthorizeUser(string name, string email);
 
     }
 }

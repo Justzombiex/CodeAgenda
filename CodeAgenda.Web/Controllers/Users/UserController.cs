@@ -17,6 +17,9 @@ namespace CodeAgenda.Web.Controllers.Users
     [ApiController]
     public class UserController : ControllerBase
     {
+
+        //TODO: Añadir ChangePasswordCommand
+
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
 

@@ -27,6 +27,14 @@ namespace CodeAgenda.Web
     {
         public static void Main(string[] args)
         {
+
+            string password = "1234";
+            string hash = BCrypt.Net.BCrypt.HashPassword(password);
+            bool isValid = BCrypt.Net.BCrypt.Verify(password, hash);
+
+            Console.WriteLine($"Hash: {hash}");
+            Console.WriteLine($"¿Verifica?: {isValid}");
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
